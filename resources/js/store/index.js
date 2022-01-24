@@ -6,6 +6,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {},
     mutations: {},
-    getters: {},
+    getters: {
+        getAll: state => state.all,
+        getById: state => id => state.all.find(item => item.id === id),
+    },
     actions: {}
 });
