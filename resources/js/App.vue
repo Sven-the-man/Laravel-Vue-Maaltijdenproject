@@ -9,7 +9,7 @@
 export default {
     data() {
         return {
-            message: "App Hello World",
+            message: "Als je dit kan lezen, dan doet Vue het correct!",
         };
     },
 };

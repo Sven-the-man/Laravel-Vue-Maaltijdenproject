@@ -1,6 +1,6 @@
 <template>
     <div>
-        Home Hello World
+        Titel van de homepage
     </div>
 </template>
 
