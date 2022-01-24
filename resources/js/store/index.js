@@ -1,14 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import Home from '../pages/Home.vue';
+import {meals} from './modules/meals';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {},
-    mutations: {},
-    getters: {
-        getAll: state => state.all,
-        getById: state => id => state.all.find(item => item.id === id),
-    },
-    actions: {}
+    modules: {meals, Home},
+    strict: true,
 });

@@ -1,5 +1,9 @@
 import Vue from "vue";
 
+import axios from 'axios';
+window.axios = axios;
+axios.defaults.baseURL = '/api/';
+
 //Main pages
 import App from "./App.vue";
 

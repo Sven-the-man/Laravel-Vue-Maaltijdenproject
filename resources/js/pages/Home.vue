@@ -15,11 +15,11 @@
     export default {
         computed: {
         meals() {
-            return this.$store.getters['getAll'];
+            return this.$store.getters['meals/getAll'];
         },
     },
     mounted() {
-        this.$store.dispatch('setAll');
+        this.$store.dispatch('meals/setAll');
     },
         
 
