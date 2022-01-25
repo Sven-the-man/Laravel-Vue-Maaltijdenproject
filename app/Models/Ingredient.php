@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Meal extends Model
+class Ingredient extends Model
 {
     use HasFactory;
 
-    function ingredients() {
-        return $this->hasMany(Ingredient::class);
+    function meals() {
+        $this->belongsToMany(Meal::class);
     }
-
-    protected $fillable = ['name'];
 }

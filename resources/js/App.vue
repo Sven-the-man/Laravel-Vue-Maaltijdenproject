@@ -1,23 +1,25 @@
 <template>
     <div>
-        <h1>{{ message }}</h1>
-        <router-view/>
+        <Navbar />
+        <router-view />
     </div>
 </template>
 
 <script>
+import Navbar from "./components/Navbar.vue";
 export default {
+    components: { Navbar },
     data() {
         return {
-            message: "Als je dit kan lezen, dan doet Vue het correct!",
+            
         };
-    },
+    }
 };
 </script>
 
 <style scoped>
 h1 {
     text-align: center;
-    padding: 50px
+    padding: 50px;
 }
 </style>
