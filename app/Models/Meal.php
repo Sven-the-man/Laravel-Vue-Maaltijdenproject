@@ -10,7 +10,7 @@ class Meal extends Model
     use HasFactory;
 
     function ingredients() {
-        return $this->hasMany(Ingredient::class);
+        return $this->belongsToMany(Ingredient::class);
     }
 
     protected $fillable = ['name'];
