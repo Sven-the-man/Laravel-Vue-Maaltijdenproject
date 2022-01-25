@@ -1,34 +1,38 @@
 <template>
-    <div>
-        <h1>Alle maaltijden:</h1>
-        <table>
-            <tr v-for="meal in meals" :key="meal.id">
-                <td>{{ meal.id }}</td>
-                <td>{{ meal.name }}</td>
-            </tr>
-        </table>   
+  <div class="container">
+    <h1>Alle maaltijden:</h1>
+    <div class="all_meals">
+        <div v-for="meal in meals" :key="meal.id">
+          {{ meal.id }}
+          {{ meal.name }}
+        </div>
     </div>
-
+  </div>
 </template>
 
 <script>
-    export default {
-        computed: {
-        meals() {           
-            
-            return this.$store.getters['meals/getAll'];
-        },
+export default {
+  computed: {
+    meals() {
+      return this.$store.getters["meals/getAll"];
     },
-    mounted() {
-        this.$store.dispatch('meals/setAll');
-    },
-        
-
-    }
+  },
+  mounted() {
+    this.$store.dispatch("meals/setAll");
+  },
+};
 </script>
 
 <style scoped>
-h1 {
-    text-align: center;
+.container {
+  text-align: center;
+  font-size: 20px;
+  text-align: center;
+}
+
+.all_meals {
+  text-align: center;
+  font-size: 20px;
+  
 }
 </style>
