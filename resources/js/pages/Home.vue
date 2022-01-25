@@ -14,7 +14,8 @@
 <script>
     export default {
         computed: {
-        meals() {
+        meals() {           
+            
             return this.$store.getters['meals/getAll'];
         },
     },
