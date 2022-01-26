@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/meals', [MealController::class, 'index']);
+Route::get('ingredients', [IngredientController::class, 'index']);

@@ -15,6 +15,7 @@ class MealFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence,
+            'description' => $this->faker->paragraph(50),
         ];
     }
 }
