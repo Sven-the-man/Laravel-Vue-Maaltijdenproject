@@ -6,7 +6,7 @@
 
 <style scoped>
 .navbar {
-    background: lightseagreen;
+    background: white;
     height: 50px;
     border: 1px solid black;
     text-align: center;

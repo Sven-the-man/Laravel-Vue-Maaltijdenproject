@@ -17,9 +17,3 @@ export default {
 };
 </script>
 
-<style scoped>
-h1 {
-    text-align: center;
-    padding: 50px;
-}
-</style>

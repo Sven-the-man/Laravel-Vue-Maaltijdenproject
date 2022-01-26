@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h1>{{ meal.name }}</h1>
-        <div class="ingredients">
+        <div class="ingredient">
             <h3>Benodigdheden:</h3>
             <ul>
                 <li

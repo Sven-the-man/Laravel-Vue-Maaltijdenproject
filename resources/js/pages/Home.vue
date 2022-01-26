@@ -1,42 +1,57 @@
 <template>
-    <div class="container">
-        <h1>Alle maaltijden:</h1>
-        <div class="all_meals">
-            <div v-for="meal in meals" :key="meal.id">
-                {{ meal.id }}
-                {{ meal.name }}
-                <router-link
-                    :to="{ name: 'meal.show', params: { id: meal.id } }"
-                >
-                    Bekijk recept
-                </router-link>
-            </div>
+  <div class="container">
+    <main class="grid">
+      <article v-for="meal in meals" :key="meal.id">
+        <div class="text">
+          <img src="https://www.foodandfriends.nl/app/uploads/2020/12/Humburger-Kookschool-klassiek.jpg">
+          <h3>{{meal.name}}</h3>
+          <p>
+            {{meal.description}}
+          </p>
         </div>
-    </div>
+      </article>
+    </main>
+  </div>
 </template>
 
 <script>
 export default {
-    computed: {
-        meals() {
-            return this.$store.getters["meals/getAll"];
-        }
+  computed: {
+    meals() {
+      return this.$store.getters["meals/getAll"];
     },
-    mounted() {
-        this.$store.dispatch("meals/setAll");
-    }
+  },
+  mounted() {
+    this.$store.dispatch("meals/setAll");
+  },
 };
 </script>
 
-<style scoped>
+<style>
+html {background-color: black}
 .container {
-    text-align: center;
-    font-size: 20px;
-    text-align: center;
+    width: 60%;
+    
+    
+}
+.grid {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+}
+.grid > article {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+.grid > article img {
+  max-width: 100%;
+  padding-top: 20px;
+}
+.text {
+  padding: 0 20px 20px;
 }
 
-.all_meals {
-    text-align: center;
-    font-size: 20px;
-}
 </style>
