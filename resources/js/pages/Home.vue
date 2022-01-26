@@ -3,7 +3,9 @@
     <main class="grid">
       <article v-for="meal in meals" :key="meal.id">
         <div class="text">
+          <router-link :to="{name: 'meal.show', params: {id: meal.id}}">
           <img src="https://www.foodandfriends.nl/app/uploads/2020/12/Humburger-Kookschool-klassiek.jpg">
+          </router-link>
           <h3>{{meal.name}}</h3>
           <p>
             {{meal.description}}
@@ -28,10 +30,9 @@ export default {
 </script>
 
 <style>
-html {background-color: black}
+
 .container {
     width: 60%;
-    
     
 }
 .grid {
@@ -48,10 +49,11 @@ html {background-color: black}
 }
 .grid > article img {
   max-width: 100%;
-  padding-top: 20px;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
 .text {
-  padding: 0 20px 20px;
+  padding: 20px;
+  text-align: center;
 }
 
 </style>
