@@ -2,12 +2,15 @@
     <div class="container">
         <h1>{{ meal.name }}</h1>
         <div class="ingredients">
-        <h3> Benodigdheden: </h3>
-        <ul>
-            <li v-for="ingredient in meal.ingredient_id" :key="ingredient.id">
-                {{ ingredient.name }}
-            </li>
-        </ul>
+            <h3>Benodigdheden:</h3>
+            <ul>
+                <li
+                    v-for="ingredient in meal.ingredient_id"
+                    :key="ingredient.id"
+                >
+                    {{ ingredient.name }}
+                </li>
+            </ul>
         </div>
         <p>{{ meal.description }}</p>
     </div>
@@ -21,7 +24,8 @@ export default {
                 parseInt(this.$route.params.id)
             );
         }
-    }
+    },
+    
 };
 </script>
 
@@ -30,6 +34,5 @@ export default {
     text-align: center;
     width: 50%;
     font-size: 20px;
-
 }
 </style>

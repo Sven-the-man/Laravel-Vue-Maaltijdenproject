@@ -3,10 +3,17 @@ import VueRouter from "vue-router";
 
 import Home from '../pages/Home.vue'
 import MealShow from '../pages/meals/Show.vue';
+import Account from '../pages/Account.vue';
+import store from '../store';
+
+
+
+import LoginOverview from '../pages/auth/Login.vue';
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const router = new VueRouter({
+    mode: 'history',
     routes: [
         {
             path: "/",
@@ -17,5 +24,30 @@ export default new VueRouter({
             component: MealShow,
             name: 'meal.show',
         },
+        {
+            path: '/login',
+            component: LoginOverview,
+            name: 'auth.login',
+            meta: {
+                shouldBeLoggedOut: true,
+            },
+        },
+        {
+            path: '/account',
+            component: Account,
+            name: 'account',
+            meta: {
+                shouldBeLoggedIn: true,
+            },
+        },
     ]
 });
+
+router.beforeEach(({meta}, from, next) => {
+    const isLoggedIn = store.getters['account/getIsLoggedIn'];
+    if (meta.shouldBeLoggedIn && !isLoggedIn) next({name: 'auth.login'});
+    if (meta.shouldBeLoggedOut && isLoggedIn) next({name: 'account'});
+    next();
+});
+
+export default router;
