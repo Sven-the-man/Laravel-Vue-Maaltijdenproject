@@ -17,7 +17,7 @@ const router = new VueRouter({
     routes: [
         {
             path: "/",
-            component: Home
+            component: Home,
         },
         {
             path: '/meals/:id',
@@ -45,8 +45,9 @@ const router = new VueRouter({
 
 router.beforeEach(({meta}, from, next) => {
     const isLoggedIn = store.getters['account/getIsLoggedIn'];
-    if (meta.shouldBeLoggedIn && !isLoggedIn) next({name: 'auth.login'});
-    if (meta.shouldBeLoggedOut && isLoggedIn) next({name: 'account'});
+    
+    if (meta.shouldBeLoggedIn !== undefined && meta.shouldBeLoggedIn && !isLoggedIn) next({name: 'auth.login'});
+    if (meta.shouldBeLoggedOut !== undefined && meta.shouldBeLoggedOut && isLoggedIn) next({name: 'account'});
     next();
 });
 

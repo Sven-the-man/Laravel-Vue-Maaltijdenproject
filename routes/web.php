@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +21,12 @@ Route::get('/', function () {
 });
 
 
-Route::post('login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
-Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
+// Route::post('login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
+// Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
+
+Route::get('auth', function () {
+    return dd(Auth::user());
+});
 
 
 require __DIR__.'/auth.php';

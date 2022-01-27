@@ -4,7 +4,7 @@ export const account = {
     namespaced: true,
     state: () => ({
         user: JSON.parse(localStorage.getItem('user')),
-        isLoggedIn: localStorage.getItem('loggedIn') === 'true',
+        isLoggedIn: false,
     }),
     getters: {
         get: state => state.user,
@@ -17,7 +17,6 @@ export const account = {
         },
         SET_LOGGEDIN: (state, payload) => {
             state.isLoggedIn = payload;
-            localStorage.setItem('loggedIn', payload.toString());
         },
     },
     actions: {
