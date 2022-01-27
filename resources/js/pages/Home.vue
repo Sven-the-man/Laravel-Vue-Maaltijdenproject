@@ -7,9 +7,6 @@
           <img src="https://www.foodandfriends.nl/app/uploads/2020/12/Humburger-Kookschool-klassiek.jpg">
           </router-link>
           <h3>{{meal.name}}</h3>
-          <p>
-            {{meal.description}}
-          </p>
         </div>
       </article>
     </main>

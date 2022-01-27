@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Home from '../pages/Home.vue'
 import MealShow from '../pages/meals/Show.vue';
 import Account from '../pages/Account.vue';
+import Ingredients from '../pages/meals/Ingredients.vue';
 import store from '../store';
 
 
@@ -36,6 +37,14 @@ const router = new VueRouter({
             path: '/account',
             component: Account,
             name: 'account',
+            meta: {
+                shouldBeLoggedIn: true,
+            },
+        },
+        {
+            path: '/ingredients',
+            component: Ingredients,
+            name: 'ingredients',
             meta: {
                 shouldBeLoggedIn: true,
             },

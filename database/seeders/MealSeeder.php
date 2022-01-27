@@ -21,7 +21,7 @@ class MealSeeder extends Seeder
     
         $meals->each(function (Meal $meal) use ($ingredients) {
             for ($i = 0; $i < rand(1, $ingredients); $i++) {
-                $meal->ingredients()->syncWithoutDetaching(rand(1, $ingredients));
+                $meal->ingredients()->syncWithoutDetaching(rand(5, $ingredients));
                 }
             });
         }
