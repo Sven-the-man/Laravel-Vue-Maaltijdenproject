@@ -16,17 +16,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/{any}', function () {
     return view('welcome');
-});
-
-
-// Route::post('login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
-// Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
-
-Route::get('auth', function () {
-    return dd(Auth::user());
-});
+})->where('any', '.*');
 
 
 require __DIR__.'/auth.php';

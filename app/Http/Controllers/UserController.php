@@ -11,7 +11,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        return UserResource::collection(Auth::user());
+        
+        return UserResource::collection(User::get(Auth::user());
     }
 }
 

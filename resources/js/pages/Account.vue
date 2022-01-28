@@ -4,7 +4,7 @@
             <h1>Account pagina</h1>
         </div>
         <div class="add_ingredients_button">
-            <router-link to="/ingredients"><button>Klik mij</button></router-link>
+            <router-link to="/my_ingredients"><button>Klik mij</button></router-link>
         </div>
         <div class="my_meals">
             <h2>Mijn maaltijden:</h2>

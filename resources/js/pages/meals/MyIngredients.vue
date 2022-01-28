@@ -1,6 +1,10 @@
 <template>
     <div class="container">
         <h2> Mijn huidige ingredienten: </h2>
+        
+        <li v-for="ingredient in user.ingredient_id" :key="ingredient.id">
+          {{ ingredient.name }}
+        </li>
         {{user}}
     </div>
 </template>
@@ -9,9 +13,7 @@
 export default {
   computed: {
     user() {
-      return this.$store.getters["user/getById"](
-        parseInt(this.$route.params.id)
-      );
+      return this.$store.getters["account/get"];
     },
   },
 };
