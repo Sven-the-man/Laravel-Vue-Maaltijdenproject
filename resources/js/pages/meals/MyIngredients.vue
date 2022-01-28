@@ -1,11 +1,7 @@
 <template>
     <div class="container">
         <h2> Mijn huidige ingredienten: </h2>
-        
-        <li v-for="ingredient in user.ingredient_id" :key="ingredient.id">
-          {{ ingredient.name }}
-        </li>
-        {{user}}
+       {{user.ingredient_id}}
     </div>
 </template>
 

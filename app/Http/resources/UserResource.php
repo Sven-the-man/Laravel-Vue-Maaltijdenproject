@@ -18,7 +18,7 @@ class UserResource extends JsonResource
 
             'id' => $this->id,
             'name' => $this->name,
-            'ingredient_id' => IngredientResource::collection($this->ingredients),
+            'ingredients' => IngredientResource::collection($this->ingredients),
             
         ];
     }
