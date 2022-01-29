@@ -17,6 +17,7 @@ class CreateMealsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longtext('description');
+            $table->text('image_name');
             $table->timestamps();
         });
     }

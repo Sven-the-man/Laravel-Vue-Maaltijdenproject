@@ -11,9 +11,7 @@
       <div class="article" v-for="meal in meals" :key="meal.id">
         <div class="text">
           <router-link :to="{ name: 'meal.show', params: { id: meal.id } }">
-            <img
-              src="https://www.foodandfriends.nl/app/uploads/2020/12/Humburger-Kookschool-klassiek.jpg"
-            />
+            {{ meal.image_name}}
           </router-link>
           <h3>{{ meal.name }}</h3>
         </div>
@@ -46,6 +44,13 @@ export default {
   },
   mounted() {
     this.$store.dispatch("meals/setAll");
+  },
+  methods: {
+    getMealPhoto() {
+   
+    return 'images/'
+
+    },
   },
 };
 </script>
