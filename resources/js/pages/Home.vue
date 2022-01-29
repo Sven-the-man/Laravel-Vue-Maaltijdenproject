@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      perPage: 9,
+      perPage: 8,
     };
   },
 
@@ -60,7 +60,7 @@ export default {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 0.5fr));
   grid-gap: 20px;
   align-items: stretch;
 }
@@ -78,5 +78,6 @@ export default {
   margin-top: 20px;
   padding: 20px;
   text-align: center;
+  font-size: 10px;
 }
 </style>
