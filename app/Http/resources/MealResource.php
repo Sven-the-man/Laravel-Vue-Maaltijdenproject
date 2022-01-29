@@ -19,6 +19,7 @@ class MealResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'ingredient_id' => IngredientResource::collection($this->ingredients),
+            'image_name' => $this->image_name,
             
         ];
     }

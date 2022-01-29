@@ -5,7 +5,7 @@
         <h1>{{ meal.name }}</h1>
       </div>
       <div class="image">
-        <img src="https://www.foodandfriends.nl/app/uploads/2020/12/Humburger-Kookschool-klassiek.jpg">
+        <img :src="'../images/' + meal.image_name">
       </div>
       <div class="ingredients">
         <h3>Benodigdheden:</h3>
@@ -38,14 +38,14 @@ export default {
 <style scoped>
 .container {
   text-align: left;
-  width: 40%;
+  width: 60%;
   font-size: 18px;
   background: light-gray;
 }
 
 .title {
-  text-align: left;
-  margin: 40px;
+  text-align: center;
+  margin: 20px;
   border-bottom: 1px solid grey;
 }
 
@@ -55,17 +55,18 @@ export default {
 }
 
 img {
-  width: 70%;
+  width: 50%;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-  margin: 40px;
+  margin: 20px;
 }
 .image {
   border-bottom: 1px solid grey;
-  margin: 40px;
+  margin: 20px;
+  text-align: center;
 }
 
 .instructions {
   border-bottom: 1px solid grey;
-  margin: 40px;
+  margin: 20px;
 }
 </style>
