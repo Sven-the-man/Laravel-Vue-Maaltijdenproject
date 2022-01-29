@@ -78,4 +78,8 @@ export default {
   text-align: center;
   font-size: 10px;
 }
+
+h3 {
+  font-size: 10px;
+}
 </style>
