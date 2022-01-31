@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/meals', [MealController::class, 'index']);
-Route::get('/my_ingredients', [UserController::class, 'index']);
-Route::get('ingredients', [IngredientController::class, 'index']);
+Route::get('/my_ingredients', [IngredientController::class, 'index']);
+Route::get('/ingredients', [IngredientController::class, 'index']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
+
+Route::post('ingredients', [UserController::class, 'store']);

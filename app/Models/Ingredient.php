@@ -12,4 +12,8 @@ class Ingredient extends Model
     function meals() {
         $this->belongsToMany(Meal::class);
     }
+
+    function user() {
+        $this->belongsToMany(User::class);
+    }
 }

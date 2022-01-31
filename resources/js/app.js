@@ -1,14 +1,21 @@
 import Vue from "vue";
 
+//axios initialisation
 import axios from 'axios';
 window.axios = axios;
 axios.defaults.baseURL = '/api/';
 
+
+// bootstrap
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+
+//vue-multiselect
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
 
 //Main pages
 import App from "./App.vue";
