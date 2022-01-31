@@ -26,4 +26,4 @@ Route::get('/my_ingredients', [IngredientController::class, 'index']);
 Route::get('/ingredients', [IngredientController::class, 'index']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
 
-Route::post('ingredients', [UserController::class, 'store']);
+Route::post('/ingredients', [IngredientController::class, 'store']);

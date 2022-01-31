@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUserIngredientsRequest;
 use App\Http\Resources\IngredientResource;
 use App\Models\Ingredient;
@@ -15,14 +15,13 @@ class IngredientController extends Controller
         return IngredientResource::collection(Ingredient::all());
     }
 
-    public function store(StoreUserIngredientsRequest $request) {
+    public function store(StoreUserIngredientsRequest $request, User $user) {
 
        
         $validated = $request->validated();
-        dd($validated);
+            
+        $user->update($validated)->ingredients()->attach(explode(',', $validated['category_id']));
 
-        User::update($validated)->ingredients()->sync($request->ingredients);
-
-
+        dd("succes!");
     }
 }

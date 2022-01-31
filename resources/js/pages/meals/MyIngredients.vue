@@ -25,7 +25,6 @@
           </div>
         </div>
       </div>
-    </div>
 </template>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <script>
@@ -58,7 +57,7 @@ export default {
           const formData = new FormData();
            formData.append('user_id', this.user.id);
            formData.append('ingredient_id', ingredients);
-           this.$store.dispatch('books/create', formData);
+           this.$store.dispatch('ingredients/create', formData);
         }
   },
 
