@@ -5,7 +5,7 @@
         <h1>{{ meal.name }}</h1>
       </div>
       <div class="image">
-        <img :src="'../images/' + meal.image_name">
+        <img :src="'../' + meal.image_name">
       </div>
       <div class="ingredients">
         <h3>Benodigdheden:</h3>

@@ -11,7 +11,7 @@
       <div class="article" v-for="meal in meals" :key="meal.id">
         <div class="text">
           <router-link :to="{ name: 'meal.show', params: { id: meal.id } }">
-            <img :src="'images/' + meal.image_name">
+            <img :src="meal.image_name">
           </router-link>
           <h3>{{ meal.name }}</h3>
         </div>

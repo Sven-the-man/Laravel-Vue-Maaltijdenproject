@@ -16,7 +16,7 @@ class MealFactory extends Factory
         return [
             'name' => $this->faker->sentence,
             'description' => $this->faker->paragraph(50),
-            'image_name' => rand(1, 50).".jpg",
+            'image_name' => "images/".rand(1, 50).".jpg",
         ];
     }
 }

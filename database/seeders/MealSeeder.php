@@ -15,7 +15,7 @@ class MealSeeder extends Seeder
      */
     public function run()
     {
-        $meals = Meal::factory(500)->create();
+        $meals = Meal::factory(100)->create();
 
         $ingredients = Ingredient::count();
     

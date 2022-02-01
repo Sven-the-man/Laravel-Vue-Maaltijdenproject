@@ -7,11 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
-    use HasFactory;
+
+    use HasFactory;   
+
+    protected $fillable = [
+
+        'name',
+        'description',
+        'image_name',
+        
+
+    ];
 
     function ingredients() {
         return $this->belongsToMany(Ingredient::class);
     }
 
-    protected $fillable = ['name'];
 }

@@ -8,6 +8,9 @@
       <li class="nav-item">
         <router-link to="/account">Mijn maaltijden</router-link>
       </li>
+      <li class="nav-item">
+        <router-link to="/create_meal">Nieuwe maaltijd (admin)</router-link>
+      </li>
     </ul>
   </nav>
 </template>

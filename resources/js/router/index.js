@@ -5,6 +5,7 @@ import Home from '../pages/Home.vue'
 import MealShow from '../pages/meals/Show.vue';
 import Account from '../pages/Account.vue';
 import Ingredients from '../pages/meals/MyIngredients.vue';
+import CreateMeal from '../pages/meals/CreateMeal.vue';
 import store from '../store';
 
 
@@ -45,6 +46,14 @@ const router = new VueRouter({
             path: '/my_ingredients',
             component: Ingredients,
             name: 'my_ingredients',
+            meta: {
+                shouldBeLoggedIn: true,
+            },
+        },
+        {
+            path: '/create_meal',
+            component: CreateMeal,
+            name: 'create_meal',
             meta: {
                 shouldBeLoggedIn: true,
             },

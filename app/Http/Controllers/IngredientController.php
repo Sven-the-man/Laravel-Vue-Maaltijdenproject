@@ -19,9 +19,9 @@ class IngredientController extends Controller
 
        
         $validated = $request->validated();
-            
-        $user->update($validated)->ingredients()->attach(explode(',', $validated['category_id']));
+         // This doesn't seem to work, why?   
+        // $user->update($validated)->ingredients()->attach(explode(',', $validated['category_id']));
 
-        dd("succes!");
+        dd("Package received");
     }
 }
