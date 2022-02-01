@@ -53,11 +53,7 @@ export default {
         updateUserIngredients() {
     
           const ingredients = this.selectedIngredients.map(select => select.id);
-      
-          const formData = new FormData();
-           formData.append('user_id', this.user.id);
-           formData.append('ingredient_id', ingredients);
-           this.$store.dispatch('ingredients/create', formData);
+          this.$store.dispatch('ingredients/create', ingredients);
         }
   },
 

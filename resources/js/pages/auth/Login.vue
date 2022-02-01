@@ -33,7 +33,7 @@ export default {
     methods: {
         login() {
             this.$store.dispatch('account/login', this.auth).then(() => {
-                this.$router.push('/account');
+                this.$router.push('/');
             });
         },
     },

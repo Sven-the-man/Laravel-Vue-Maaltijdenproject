@@ -15,12 +15,10 @@ class IngredientController extends Controller
         return IngredientResource::collection(Ingredient::all());
     }
 
-    public function store(StoreUserIngredientsRequest $request, User $user) {
-
-       
-        $validated = $request->validated();
+    public function store(Request $request) {
+        dd(Auth::user()->id);
          // This doesn't seem to work, why?   
-        // $user->update($validated)->ingredients()->attach(explode(',', $validated['category_id']));
+        // Auth::user()->ingredients()->attach($request);
 
         dd("Package received");
     }

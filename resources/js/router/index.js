@@ -8,8 +8,6 @@ import Ingredients from '../pages/meals/MyIngredients.vue';
 import CreateMeal from '../pages/meals/CreateMeal.vue';
 import store from '../store';
 
-
-
 import LoginOverview from '../pages/auth/Login.vue';
 
 Vue.use(VueRouter);

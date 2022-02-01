@@ -58,7 +58,7 @@ export default {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 0.5fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 0.5fr));
   grid-gap: 20px;
   align-items: stretch;
 }

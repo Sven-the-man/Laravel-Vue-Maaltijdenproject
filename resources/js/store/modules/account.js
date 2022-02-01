@@ -3,8 +3,10 @@ import axios from 'axios';
 export const account = {
     namespaced: true,
     state: () => ({
+        // user: JSON.parse(localStorage.getItem('user')),
+        // isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
         user: JSON.parse(localStorage.getItem('user')),
-        isLoggedIn: false,
+        isLoggedIn: localStorage.getItem('loggedIn') === 'true',
     }),
     getters: {
         get: state => state.user,
@@ -17,6 +19,8 @@ export const account = {
         },
         SET_LOGGEDIN: (state, payload) => {
             state.isLoggedIn = payload;
+            localStorage.setItem('isLoggedIn', JSON.stringify(payload));
+
         },
     },
     actions: {
