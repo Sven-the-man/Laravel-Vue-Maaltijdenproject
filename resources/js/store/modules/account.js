@@ -2,12 +2,16 @@ import axios from 'axios';
 
 export const account = {
     namespaced: true,
-    state: () => ({
-        // user: JSON.parse(localStorage.getItem('user')),
-        // isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
-        user: JSON.parse(localStorage.getItem('user')),
-        isLoggedIn: localStorage.getItem('loggedIn') === 'true',
-    }),
+    state: () => {
+        const storedUser = localStorage.getItem('user')
+        const storedIsLoggedIn = localStorage.getItem('isLoggedIn')
+        return {
+            user: storedUser ? JSON.parse(storedUser) : false,
+            isLoggedIn: storedIsLoggedIn ? JSON.parse(storedIsLoggedIn): false,
+            // user: JSON.parse(localStorage.getItem('user')),
+            // isLoggedIn: localStorage.getItem('loggedIn') === 'true',
+        }
+    },
     getters: {
         get: state => state.user,
         getIsLoggedIn: state => state.isLoggedIn,
@@ -15,12 +19,13 @@ export const account = {
     mutations: {
         SET: (state, payload) => {
             state.user = payload;
-            localStorage.setItem('user', JSON.stringify(payload));
+            if(!payload) localStorage.removeItem('user')
+            else localStorage.setItem('user', JSON.stringify(payload));
         },
         SET_LOGGEDIN: (state, payload) => {
             state.isLoggedIn = payload;
-            localStorage.setItem('isLoggedIn', JSON.stringify(payload));
-
+            if(!payload) localStorage.removeItem('isLoggedIn')
+            else localStorage.setItem('isLoggedIn', JSON.stringify(payload));
         },
     },
     actions: {
