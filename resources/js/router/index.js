@@ -2,10 +2,11 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from '../pages/Home.vue'
-import MealShow from '../pages/meals/Show.vue';
+import MealShow from '../pages/meals/ShowMeal.vue';
 import Account from '../pages/Account.vue';
 import Ingredients from '../pages/meals/MyIngredients.vue';
 import CreateMeal from '../pages/meals/CreateMeal.vue';
+import AdminPanel from '../pages/AdminPanel.vue';
 import store from '../store';
 
 import LoginOverview from '../pages/auth/Login.vue';
@@ -52,6 +53,14 @@ const router = new VueRouter({
             path: '/create_meal',
             component: CreateMeal,
             name: 'create_meal',
+            meta: {
+                shouldBeLoggedIn: true,
+            },
+        },
+        {
+            path: '/admin_panel',
+            component: AdminPanel,
+            name: 'AdminPanel',
             meta: {
                 shouldBeLoggedIn: true,
             },

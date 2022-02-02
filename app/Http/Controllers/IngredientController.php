@@ -15,11 +15,11 @@ class IngredientController extends Controller
         return IngredientResource::collection(Ingredient::all());
     }
 
-    public function store(Request $request) {
-        dd(Auth::user()->id);
-         // This doesn't seem to work, why?   
-        // Auth::user()->ingredients()->attach($request);
-
-        dd("Package received");
+    public function update(Request $request) {
+       
+        
+        User::find(Auth::user()->id)->ingredients()->attach($request);
+       
+       
     }
 }

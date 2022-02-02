@@ -3,17 +3,17 @@
    
     <ul class="navbar_items">
       <li class="nav-item">
-        <router-link to="/">Home</router-link>
-      </li>
-      <li class="nav-item">
         <router-link v-if="!isLoggedIn" :to="{name: 'auth.login'}" class="nav-link">Log in</router-link>
         <a v-if="isLoggedIn" class="nav-link pe-auto" href="#" @click="logout">Log uit</a>
+      </li>
+      <li class="nav-item">
+        <router-link to="/">Home</router-link>
       </li>
       <li class="nav-item">
         <router-link to="/account">Mijn maaltijden</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/create_meal">Nieuwe maaltijd (admin)</router-link>
+        <router-link to="/admin_panel">Admin paneel (admin)</router-link>
       </li>
     </ul>
   </nav>
@@ -29,7 +29,7 @@
      methods: {
          logout() {
            this.$store.dispatch('account/logout');
-        this.$router.push('/');
+        // this.$router.push('/');
       },     },
 };
 </script>

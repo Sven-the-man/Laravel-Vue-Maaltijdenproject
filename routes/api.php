@@ -23,10 +23,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/meals', [MealController::class, 'index']);
 Route::post('meals', [MealController::class, 'store']);
+
 Route::get('/my_ingredients', [IngredientController::class, 'index']);
 Route::get('/ingredients', [IngredientController::class, 'index']);
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
 Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
 
-Route::post('/ingredients', [IngredientController::class, 'store']);
+Route::post('/ingredients', [IngredientController::class, 'update']);

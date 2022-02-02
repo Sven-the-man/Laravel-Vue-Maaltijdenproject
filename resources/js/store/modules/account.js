@@ -8,8 +8,7 @@ export const account = {
         return {
             user: storedUser ? JSON.parse(storedUser) : false,
             isLoggedIn: storedIsLoggedIn ? JSON.parse(storedIsLoggedIn): false,
-            // user: JSON.parse(localStorage.getItem('user')),
-            // isLoggedIn: localStorage.getItem('loggedIn') === 'true',
+            
         }
     },
     getters: {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app">
         <Navbar />
         <router-view />
     </div>
@@ -16,4 +16,13 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+
+.app {
+    
+    padding-top: 60px;
+}
+
+</style>
 
