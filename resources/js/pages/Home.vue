@@ -13,7 +13,7 @@
           <router-link :to="{ name: 'meal.show', params: { id: meal.id } }">
             <img :src="meal.image_name">
           </router-link>
-          <h3>{{ meal.name }}</h3>
+          <p>{{meal.name}}</p>
         </div>
       </div>
     </main>
@@ -76,10 +76,7 @@ export default {
   margin-top: 20px;
   padding: 20px;
   text-align: center;
-  font-size: 10px;
+  font-size: 17px;
 }
 
-h3 {
-  font-size: 10px;
-}
 </style>

@@ -24,7 +24,6 @@ class MealController extends Controller
     
             Meal::create($validated)->ingredients()->attach(explode(',', $validated['ingredient_id']));
     
-           dd("Meal upload gelukt!");
         }
 
 

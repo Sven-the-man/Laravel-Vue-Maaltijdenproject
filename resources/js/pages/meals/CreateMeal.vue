@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="justify-content-center">
             <form enctype="multipart/form-data" @submit.prevent="createMeal">
                 <div class="mb-3">
                     <label for="name" class="form-label">Maaltijd naam:</label>
@@ -70,6 +70,8 @@ export default {
             formData.append('description', this.meal.description);
             formData.append('ingredient_id', ingredients);
             this.$store.dispatch('meals/create', formData);
+
+            this.$router.go(-1);
             
         },
     },
@@ -79,11 +81,8 @@ export default {
 
 
 <style scoped>
-.container {
-    padding-top: 80px;
-}
 
-.row {
+.container {
     width: 60%;
 }
 </style>

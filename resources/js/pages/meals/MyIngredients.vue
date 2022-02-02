@@ -1,16 +1,8 @@
 <template>
     <div class="container">
-        <div class="column">
-            <div class="my_ingredients">
-                <h2>Mijn huidige ingredienten:</h2>
-                <li v-for="ingredient in user.ingredients" :key="ingredient.id">
-                    {{ ingredient.name }}
-                </li>
-            </div>
-        </div>
-        <div class="column">
+      <div class="column left">
           <div class="add_ingredients">
-            <h2>Alle ingredienten (test)</h2>
+            <h2>Mijn ingredienten</h2>
             <form enctype="multipart/form-data" @submit.prevent="updateUserIngredients">
             <multiselect
                     v-model="selectedIngredients"
@@ -22,8 +14,19 @@
                 />
                 <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                <h4> Huidige ingredienten (test) </h4>
+                <li v-for="ingredient in user.ingredients" :key="ingredient.id">
+                    {{ ingredient.name }}
+                </li>
           </div>
         </div>
+        <div class="column right">
+            <div class="my_ingredients">
+                <h2>Mogelijke maaltijden:</h2>
+                
+            </div>
+        </div>
+        
       </div>
 </template>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
@@ -56,34 +59,36 @@ export default {
           this.$store.dispatch('ingredients/create', ingredients);
         }
   },
-
-
 };
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
 .column {
-    float: left;
-    width: 50%;
-    border-left: 1px solid grey;
-    margin: 40px;
-    text-align: center;
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 25%;
+  border-right: 1px solid black;
+
+}
+
+.right {
+  width: 75%;
+  text-align: center;
 }
 
 /* Clear floats after the columns */
-.container:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.container {
-    display: flex;
-    width: 60%;
-    padding-top: 50px;
-}
-
-.column {
-    flex: 50%;
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 </style>

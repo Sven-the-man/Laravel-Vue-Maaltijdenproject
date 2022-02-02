@@ -66,7 +66,7 @@ body {
 }
 
 .container {
-  width: 60%;
+  width: 100%;
 }
 .title {
   text-align: center;
@@ -106,10 +106,10 @@ li a:hover {
 table.blueTable {
     border: 1px solid #1c6ea4;
     background-color: #eeeeee;
-    text-align: left;
+    text-align: center;
     border-collapse: collapse;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin: auto;
+    
 }
 table.blueTable td,
 table.blueTable th {
