@@ -1,0 +1,5 @@
+1. Meal update request fromData komt leeg bij de controller aan. 
+
+2. Bij page refresh verlies ik mijn login state, terwijl Vue "ingelogd" blijft (dan geen toegang tot data van ingelogde user).
+
+3. Bij een page refresh verlies ik de params die meegestuurd met de router-link zijn.

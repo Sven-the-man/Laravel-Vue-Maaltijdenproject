@@ -2,7 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from '../pages/Home.vue'
-import MealShow from '../pages/meals/ShowMeal.vue';
+import ShowMeal from '../pages/meals/ShowMeal.vue';
+import EditMeal from '../pages/meals/EditMeal.vue';
 import Ingredients from '../pages/meals/MyMeals.vue';
 import CreateMeal from '../pages/meals/CreateMeal.vue';
 import AdminPanel from '../pages/AdminPanel.vue';
@@ -21,8 +22,13 @@ const router = new VueRouter({
         },
         {
             path: '/meals/:id',
-            component: MealShow,
+            component: ShowMeal,
             name: 'meal.show',
+        },
+        {
+            path: '/meals/edit/:id',
+            component: EditMeal,
+            name: 'meal.edit',
         },
         {
             path: '/login',

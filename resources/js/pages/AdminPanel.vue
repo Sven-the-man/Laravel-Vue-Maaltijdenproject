@@ -16,10 +16,16 @@
       <table class="blueTable">
         <tbody>
           <tr v-for="meal in meals" :key="meal.id">
-            <router-link :to="{ name: 'meal.show', params: { id: meal.id } }">
-              {{ meal.name }}
-            </router-link>
-            <td><button class="btn btn-primary">Bewerk</button></td>
+            <td>
+              <router-link :to="{ name: 'meal.show', params: { id: meal.id } }">
+                {{ meal.name }}
+              </router-link>
+            </td>
+            <td>
+              <router-link :to="{ name: 'meal.edit', params: { id: meal.id } }">
+                <button class="btn btn-primary">Bewerk</button>
+              </router-link>     
+            </td>                     
             <td>
               <button @click="removeMeal(meal.id)" class="btn btn-primary">
                 Verwijder

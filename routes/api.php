@@ -33,3 +33,5 @@ Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middle
 Route::post('/ingredients', [IngredientController::class, 'update']);
 
 Route::post('remove-meal', [mealController::class, 'destroy']);
+
+Route::post('update-meal', [MealController::class, 'update']);

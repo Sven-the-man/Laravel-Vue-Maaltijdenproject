@@ -13,7 +13,7 @@
         <router-link to="/my_ingredients">Mijn maaltijden</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/admin_panel">Admin paneel (admin)</router-link>
+        <router-link to="/admin_panel">Admin paneel</router-link>
       </li>
     </ul>
   </nav>
