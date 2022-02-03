@@ -68,15 +68,22 @@ export default {
 }
 
 /* Create two unequal columns that floats next to each other */
+.container {
+  width: 100%;
+}
+
 .column {
   float: left;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  
 }
 
 .left {
-  width: 25%;
+  min-width: 25%;
   border-right: 1px solid black;
+  text-align: left;
+  height: 1000px;
+  
 
 }
 

@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      perPage: 8,
+      perPage: 12,
     };
   },
 

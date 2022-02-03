@@ -3,8 +3,7 @@ import VueRouter from "vue-router";
 
 import Home from '../pages/Home.vue'
 import MealShow from '../pages/meals/ShowMeal.vue';
-import Account from '../pages/Account.vue';
-import Ingredients from '../pages/meals/MyIngredients.vue';
+import Ingredients from '../pages/meals/MyMeals.vue';
 import CreateMeal from '../pages/meals/CreateMeal.vue';
 import AdminPanel from '../pages/AdminPanel.vue';
 import store from '../store';
@@ -31,14 +30,6 @@ const router = new VueRouter({
             name: 'auth.login',
             meta: {
                 shouldBeLoggedOut: true,
-            },
-        },
-        {
-            path: '/account',
-            component: Account,
-            name: 'account',
-            meta: {
-                shouldBeLoggedIn: true,
             },
         },
         {

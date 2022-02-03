@@ -6,6 +6,7 @@ use App\Http\Requests\StoreMealRequest;
 use App\Http\Resources\MealResource;
 use Illuminate\Http\File;
 use App\Models\Meal;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class MealController extends Controller
@@ -23,9 +24,24 @@ class MealController extends Controller
             $validated['image_name'] = Storage::put('images', new File($validated['image']), 'public');
     
             Meal::create($validated)->ingredients()->attach(explode(',', $validated['ingredient_id']));
-    
         }
 
+        public function destroy(Request $request)
+        {
+           
+           
+            $meal = Meal::find($request['mealId']);
+
+            $meal->ingredients()->detach();
+
+            $meal->delete();
+
+            return MealResource::collection(Meal::all());
+
+            
+        }
+
+        
 
     }
 

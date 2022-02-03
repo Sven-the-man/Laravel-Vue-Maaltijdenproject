@@ -17,9 +17,8 @@ class IngredientController extends Controller
 
     public function update(Request $request) {
        
-        
-        User::find(Auth::user()->id)->ingredients()->attach($request);
-       
-       
+        Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
+
+        return  Auth::user()->ingredients;
     }
 }

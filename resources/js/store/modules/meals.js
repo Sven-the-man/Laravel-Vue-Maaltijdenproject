@@ -18,5 +18,9 @@ export const meals = {
             const {data} = await axios.post('meals', payload);
             commit('SET_ALL', data);
         },
+        async removeMeal({commit}, payload) {
+            const {data} = await axios.post('remove-meal', {mealId: payload});
+            commit('SET_ALL', data);
+        },
     },
 };

@@ -10,7 +10,7 @@
         <router-link to="/">Home</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/account">Mijn maaltijden</router-link>
+        <router-link to="/my_ingredients">Mijn maaltijden</router-link>
       </li>
       <li class="nav-item">
         <router-link to="/admin_panel">Admin paneel (admin)</router-link>

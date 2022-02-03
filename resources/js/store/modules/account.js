@@ -51,9 +51,6 @@ export const account = {
             const {data} = await axios.put(`account/${payload.id}`, payload);
             commit('SET', data);
         },
-        async removeBook({commit}, payload) {
-            const {data} = await axios.post('remove-book', {bookId: payload});
-            commit('SET', data);
-        },
+        
     },
 };

@@ -31,3 +31,5 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middlew
 Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
 
 Route::post('/ingredients', [IngredientController::class, 'update']);
+
+Route::post('remove-meal', [mealController::class, 'destroy']);
