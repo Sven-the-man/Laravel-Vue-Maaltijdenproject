@@ -1,9 +1,16 @@
 <template>
   <div class="container">
-    <div class="title">
-      <router-link to="/create_meal"
-        ><button class="btn btn-primary">Nieuw gerecht</button></router-link
-      >
+    <div class="navigation_buttons">
+      <div class="button">
+        <router-link :to="{ name: 'meal.create' }">
+          <button class="btn btn-primary">Nieuw gerecht</button></router-link
+        >
+      </div>
+      <div class="button">
+        <router-link :to="{ name: 'ingredients.manage' }">
+          <button class="btn btn-primary">Beheer ingredienten</button></router-link
+        >
+      </div>
     </div>
     <div class="pagination">
       <b-pagination
@@ -24,8 +31,8 @@
             <td>
               <router-link :to="{ name: 'meal.edit', params: { id: meal.id } }">
                 <button class="btn btn-primary">Bewerk</button>
-              </router-link>     
-            </td>                     
+              </router-link>
+            </td>
             <td>
               <button @click="removeMeal(meal.id)" class="btn btn-primary">
                 Verwijder
@@ -80,6 +87,18 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.navigation_buttons {
+  text-align: center;
+}
+
+.button {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  display: inline-block;
 }
 
 .container {

@@ -20,19 +20,21 @@ use App\Http\Controllers\IngredientController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//meal api routes
 Route::get('/meals', [MealController::class, 'index']);
-Route::get('/meals/{meal}', [MealController::class, 'show']);
 Route::post('/meals', [MealController::class, 'store']);
-Route::post('remove-meal', [mealController::class, 'destroy']);
-Route::post('update-meal', [MealController::class, 'update']);
+Route::get('/meals/{meal}', [MealController::class, 'show']);
+Route::post('meals/remove', [mealController::class, 'destroy']);
+Route::post('meals/update', [MealController::class, 'update']);
+Route::get('meals/current', [MealController::class. 'getcurrent']);
 
-Route::get('/my_ingredients', [IngredientController::class, 'index']);
-Route::get('/ingredients', [IngredientController::class, 'index']);
+// ingredient routes
+Route::get('ingredients', [IngredientController::class, 'index']);
 
+//user ingredient routes
+Route::get('user/ingredients', [UserController::class, 'ingredients']);
+Route::post('user/ingredients/update', [IngredientController::class, 'update']);
+
+//authentication routes
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
-
-Route::post('/ingredients', [IngredientController::class, 'update']);
-
-Route::get('get-current-meal', [MealController::class. 'getcurrent']);

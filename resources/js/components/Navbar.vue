@@ -10,10 +10,10 @@
         <router-link to="/">Home</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/my_ingredients">Mijn maaltijden</router-link>
+        <router-link :to="{name: 'user.meals'}">Mijn maaltijden</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/admin_panel">Admin paneel</router-link>
+        <router-link :to="{name: 'AdminPanel'}">Admin paneel</router-link>
       </li>
     </ul>
   </nav>
