@@ -1,5 +1,5 @@
-1. Meal update request fromData komt leeg bij de controller aan. 
+1. Meal update formdata blijft leeg bij toevoegen van data.
 
-2. Bij page refresh verlies ik mijn login state, terwijl Vue "ingelogd" blijft (dan geen toegang tot data van ingelogde user).
+2. Bij page refresh kan laravel de Auth::user() niet meer ophalen, terwijl Vue een isLoggedIn=true returned.
 
 3. Bij een page refresh verlies ik de params die meegestuurd met de router-link zijn.

@@ -38,7 +38,7 @@ export default {
 <style scoped>
 .container {
   text-align: left;
-  width: 60%;
+  width: 50%;
   font-size: 18px;
   background: light-gray;
 }
@@ -55,7 +55,7 @@ export default {
 }
 
 img {
-  width: 50%;
+  width: 40%;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
   margin: 20px;
 }

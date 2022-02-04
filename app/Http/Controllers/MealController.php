@@ -15,6 +15,7 @@ class MealController extends Controller
 {
     public function index()
     {
+        
         return MealResource::collection(Meal::orderBy('created_at', 'desc')->get());
     }
 

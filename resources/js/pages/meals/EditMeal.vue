@@ -78,6 +78,7 @@ export default {
             formData.append('name', this.newMeal.name);
             formData.append('description', this.newMeal.description);
             formData.append('ingredient_id', ingredients);
+            console.log(FormData);
             // this.$store.dispatch('meals/updateMeal', formData);
 
 

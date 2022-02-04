@@ -22,4 +22,4 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';

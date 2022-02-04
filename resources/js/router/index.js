@@ -6,7 +6,7 @@ import ShowMeal from '../pages/meals/ShowMeal.vue';
 import EditMeal from '../pages/meals/EditMeal.vue';
 import Ingredients from '../pages/meals/MyMeals.vue';
 import CreateMeal from '../pages/meals/CreateMeal.vue';
-import AdminPanel from '../pages/AdminPanel.vue';
+import AdminPanel from '../pages/admin/AdminPanel.vue';
 import store from '../store';
 
 import LoginOverview from '../pages/auth/Login.vue';

@@ -2,7 +2,7 @@
     <div class="container">
       <div class="column left">
           <div class="add_ingredients">
-            <h2>Mijn ingredienten</h2>
+            <h2>Nieuwe ingredienten</h2>
             <form enctype="multipart/form-data" @submit.prevent="updateUserIngredients">
             <multiselect
                     v-model="selectedIngredients"
@@ -14,16 +14,17 @@
                 />
                 <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                <h4> Huidige ingredienten (test) </h4>
+          </div>
+          <div class="my_ingredients">
+            <h2> Mijn ingredienten </h2>
                 <li v-for="ingredient in user.ingredients" :key="ingredient.id">
                     {{ ingredient.name }}
                 </li>
           </div>
         </div>
         <div class="column right">
-            <div class="my_ingredients">
+            <div class="my_meals">
                 <h2>Mogelijke maaltijden:</h2>
-                
             </div>
         </div>
         
@@ -83,8 +84,6 @@ export default {
   border-right: 1px solid black;
   text-align: left;
   height: 1000px;
-  
-
 }
 
 .right {
@@ -97,5 +96,10 @@ export default {
   content: "";
   display: table;
   clear: both;
+}
+
+.my_ingredients {
+  padding-top: 40px;
+  text-align: left;
 }
 </style>

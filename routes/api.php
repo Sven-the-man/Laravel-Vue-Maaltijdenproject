@@ -27,8 +27,8 @@ Route::post('meals', [MealController::class, 'store']);
 Route::get('/my_ingredients', [IngredientController::class, 'index']);
 Route::get('/ingredients', [IngredientController::class, 'index']);
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
-Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::post('/ingredients', [IngredientController::class, 'update']);
 

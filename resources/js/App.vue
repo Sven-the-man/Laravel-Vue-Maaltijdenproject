@@ -20,9 +20,10 @@ export default {
 <style scoped>
 
 .app {
-    
     padding-top: 60px;
 }
+
+
 
 </style>
 
