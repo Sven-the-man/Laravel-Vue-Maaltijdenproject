@@ -26,21 +26,23 @@
 <script>
 export default {
   computed: {
-    meal() {
-      return this.$store.getters["meals/getById"](
-        parseInt(this.$route.params.id)
-      );
+        meal() {
+            return this.$store.getters["meals/getById"](
+            parseInt(this.$route.params.id))
+        },           
     },
-  },
+    mounted() {
+        this.$store.dispatch('meals/getCurrentMeal', {id: parseInt(this.$route.params.id)});
+    },
 };
 </script>
 
 <style scoped>
+
 .container {
   text-align: left;
   width: 50%;
   font-size: 18px;
-  background: light-gray;
 }
 
 .title {
