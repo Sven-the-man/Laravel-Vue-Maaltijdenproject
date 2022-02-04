@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="meal">
         <div class="justify-content-center">
             <form enctype="multipart/form-data" @submit.prevent="updateMeal">
                 <div class="mb-3">
@@ -51,14 +51,16 @@ export default {
             return this.$store.getters["ingredients/getAll"]
         },
         meal() {
-      return this.$store.getters["meals/getById"](
-        parseInt(this.$route.params.id)
-      );
+            return this.$store.getters["meals/getById"](
+            parseInt(this.$route.params.id))
+    
+        },           
+
     },
     mounted() {
-        this.$store.dispatch('ingredients/setAll');
+        this.$store.dispatch('meals/getCurrentMeal', { id: parseInt(this.$route.params.id) } );
     },
-        },
+
     methods: {
         getPlaceholder() {
          return this.meal.description;

@@ -4,6 +4,7 @@ export const meals = {
     getters: {
         getAll: state => state.all,
         getById: state => id => state.all.find(item => item.id === id),
+        getCurrentMeal: state => id => state.all.find(item => item.id == id),
     },
     mutations: {
         SET_ALL: (state, payload) => (state.all = payload),
@@ -29,8 +30,10 @@ export const meals = {
         },
 
         async getCurrentMeal({commit}, payload) {
-            const {data} = await axios.post('remove-meal', {mealId: payload});
-            commit('SET_ALL', data);
+            const {data} = await axios.get(`/meals/${payload.id}`);
+            console.log(data.ingredients)
+            commit('SET_ALL', [data.meal]);
+            commit('ingredients/SET_ALL', data.ingredients, {root: true});
         },
     },
 };

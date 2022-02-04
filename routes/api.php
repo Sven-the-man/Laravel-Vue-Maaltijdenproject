@@ -22,7 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/meals', [MealController::class, 'index']);
-Route::post('meals', [MealController::class, 'store']);
+Route::get('/meals/{meal}', [MealController::class, 'show']);
+Route::post('/meals', [MealController::class, 'store']);
+Route::post('remove-meal', [mealController::class, 'destroy']);
+Route::post('update-meal', [MealController::class, 'update']);
 
 Route::get('/my_ingredients', [IngredientController::class, 'index']);
 Route::get('/ingredients', [IngredientController::class, 'index']);
@@ -32,6 +35,4 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::post('/ingredients', [IngredientController::class, 'update']);
 
-Route::post('remove-meal', [mealController::class, 'destroy']);
-
-Route::post('update-meal', [MealController::class, 'update']);
+Route::get('get-current-meal', [MealController::class. 'getcurrent']);

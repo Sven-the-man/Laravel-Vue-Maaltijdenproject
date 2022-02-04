@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateMealRequest;
 use App\Http\Requests\StoreMealRequest;
 use App\Http\Resources\MealResource;
+use App\Models\Ingredient;
 use Illuminate\Http\File;
 use App\Models\Meal;
 use Illuminate\Http\Request;
@@ -40,7 +41,6 @@ class MealController extends Controller
     public function destroy(Request $request)
         {
            
-          
             $meal = Meal::find($request['mealId']);
 
             $meal->ingredients()->detach();
@@ -49,7 +49,10 @@ class MealController extends Controller
 
             return MealResource::collection(Meal::all());
 
-            
+        }
+
+        public function show(Meal $meal) {
+            return response()->json(['meal' => $meal, 'ingredients' => Ingredient::all()]);
         }
 
         
