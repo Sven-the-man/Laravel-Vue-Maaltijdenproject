@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\UpdateMeal;
-use App\Http\Requests\StoreMeal;
+use App\Http\Requests\UpdateMealRequest;
+use App\Http\Requests\StoreMealRequest;
 use App\Http\Resources\MealResource;
 use Illuminate\Http\File;
 use App\Models\Meal;
@@ -19,7 +19,7 @@ class MealController extends Controller
     }
 
  
-    public function store(StoreMeal $request)
+    public function store(StoreMealRequest $request)
         {
             $validated = $request->validated();
     
@@ -28,22 +28,18 @@ class MealController extends Controller
             Meal::create($validated)->ingredients()->attach(explode(',', $validated['ingredient_id']));
         }
 
-    public function update(UpdateMeal $request)
+    public function update(UpdateMealRequest $request)
         {
-            
             
             $validated = $request->validated();
             dd($validated);
 
-
-
-
         }
 
-    public function destroy(UpdateMeal $request)
+    public function destroy(Request $request)
         {
            
-           
+          
             $meal = Meal::find($request['mealId']);
 
             $meal->ingredients()->detach();
