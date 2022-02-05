@@ -52,8 +52,8 @@ class MealController extends Controller
         }
 
         public function show(Meal $meal) {
-           
-            return response()->json(['meal' => $meal, 'ingredients' => Ingredient::all()]);
+        
+            return response()->json(['meal' => $meal]);
         }
 
         

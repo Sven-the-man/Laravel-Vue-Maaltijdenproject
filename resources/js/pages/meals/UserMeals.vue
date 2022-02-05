@@ -57,7 +57,7 @@ export default {
         updateUserIngredients() {
     
           const ingredients = this.selectedIngredients.map(select => select.id);
-          this.$store.dispatch('ingredients/create', ingredients);
+          this.$store.dispatch('ingredients/update', ingredients);
         }
   },
 };

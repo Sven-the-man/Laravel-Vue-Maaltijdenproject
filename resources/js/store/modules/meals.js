@@ -11,21 +11,21 @@ export const meals = {
     },
     actions: {
         async setAll({commit}) {
-            const {data} = await axios.get('meals');
+            const {data} = await axios.get('/meals');
             commit('SET_ALL', data);
         },
-        async create({commit}, payload) {
+        async createMeal({commit}, payload) {
             console.log();
-            const {data} = await axios.post('meals', payload);
+            const {data} = await axios.post('meals/create', payload);
             commit('SET_ALL', data);
         },
         async removeMeal({commit}, payload) {
-            const {data} = await axios.post('meal/remove', {mealId: payload});
+            const {data} = await axios.post('meals/remove', {mealId: payload});
             commit('SET_ALL', data);
         },
 
         async updateMeal({commit}, payload) {
-            const {data} = await axios.post('meal/update', {mealId: payload});
+            const {data} = await axios.post('meals/update', {mealId: payload});
             commit('SET_ALL', data);
         },
 

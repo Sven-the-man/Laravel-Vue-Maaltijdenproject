@@ -69,7 +69,7 @@ export default {
             formData.append('name', this.meal.name);
             formData.append('description', this.meal.description);
             formData.append('ingredient_id', ingredients);
-            this.$store.dispatch('meals/create', formData);
+            this.$store.dispatch('meals/createMeal', formData);
 
             this.$router.go(-1);
             

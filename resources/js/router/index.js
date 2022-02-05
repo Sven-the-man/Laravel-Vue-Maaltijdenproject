@@ -5,7 +5,7 @@ import ShowMeal from '../pages/meals/ShowMeal.vue';
 import EditMeal from '../pages/meals/EditMeal.vue';
 import CreateMeal from '../pages/meals/CreateMeal.vue';
 import UserMeals from '../pages/meals/UserMeals.vue';
-import ManageIngredients from '../pages/ingredients/ManageIngredients.vue'
+import ManageIngredients from '../pages/admin/ManageIngredients.vue'
 import AdminPanel from '../pages/admin/AdminPanel.vue';
 import store from '../store';
 import LoginOverview from '../pages/auth/Login.vue';
@@ -46,7 +46,7 @@ const router = new VueRouter({
             },
         },
         {
-            path: '/meals/user',
+            path: '/user/meals',
             component: UserMeals,
             name: 'user.meals',
             meta: {

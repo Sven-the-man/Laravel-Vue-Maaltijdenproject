@@ -18,6 +18,12 @@ class UserController extends Controller
         return IngredientResource::collection(Ingredient::all());
     }
 
+    public function getUserIngredients() {
+
+    
+        return Auth::user()->ingredients;
+    }
+
     
 }
 

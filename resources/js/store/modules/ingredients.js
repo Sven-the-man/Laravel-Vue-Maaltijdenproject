@@ -13,9 +13,9 @@ export const ingredients = {
             const {data} = await axios.get('ingredients');
             commit('SET_ALL', data);
         },
-        async create({commit}, payload) {
+        async update({commit}, payload) {
             console.log(payload);
-            const {data} = await axios.post('ingredients', { ingredient_ids: payload });
+            const {data} = await axios.post('user/ingredients/update', { ingredient_ids: payload });
             commit('SET_ALL', data);
         },
     },

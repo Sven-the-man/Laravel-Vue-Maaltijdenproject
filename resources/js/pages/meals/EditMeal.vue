@@ -59,6 +59,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('meals/getCurrentMeal', { id: parseInt(this.$route.params.id) } );
+        this.$store.dispatch('ingredients/setAll');
     },
 
     methods: {
@@ -81,7 +82,7 @@ export default {
             formData.append('description', this.newMeal.description);
             formData.append('ingredient_id', ingredients);
             console.log(FormData);
-            // this.$store.dispatch('meals/updateMeal', formData);
+            this.$store.dispatch('meals/updateMeal', formData);
 
 
             

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,17 +24,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 //meal api routes
 Route::get('/meals', [MealController::class, 'index']);
-Route::post('/meals', [MealController::class, 'store']);
 Route::get('/meals/{meal}', [MealController::class, 'show']);
-Route::post('meals/remove', [mealController::class, 'destroy']);
+Route::post('/meals/create', [MealController::class, 'store']);
 Route::post('meals/update', [MealController::class, 'update']);
-Route::get('meals/current', [MealController::class. 'getcurrent']);
+Route::post('meals/remove', [mealController::class, 'destroy']);
+
 
 // ingredient routes
 Route::get('ingredients', [IngredientController::class, 'index']);
 
 //user ingredient routes
-Route::get('user/ingredients', [UserController::class, 'ingredients']);
+Route::get('user/ingredients', [UserController::class, 'getUserIngredients']);
 Route::post('user/ingredients/update', [IngredientController::class, 'update']);
 
 //authentication routes
