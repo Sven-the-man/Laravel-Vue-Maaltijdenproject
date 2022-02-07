@@ -15,7 +15,7 @@ export const meals = {
             commit('SET_ALL', data);
         },
         async setUserMeals({commit}) {
-            const {data} = await axios.get('/meals/user');
+            const {data} = await axios.get('user/meals');
             commit('SET_ALL', data);
         },
         async createMeal({commit}, payload) {
