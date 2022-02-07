@@ -4,7 +4,7 @@
             <form enctype="multipart/form-data" @submit.prevent="updateMeal">
                 <div class="mb-3">
                     <label for="name" class="form-label">Wijzig maaltijd naam:</label>
-                    <input id="name" v-model="newMeal.name" type="text" :placeholder="meal.name" class="form-control" />
+                    <input id="name" v-model="newMeal.name" type="text"  class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Wijzig instructies:</label>
@@ -51,8 +51,11 @@ export default {
             return this.$store.getters["ingredients/getAll"]
         },
         meal() {
-            return this.$store.getters["meals/getById"](
-            parseInt(this.$route.params.id))
+            const meal = {...this.$store.getters["meals/getById"](parseInt(this.$route.params.id))}
+
+            this.newMeal = meal
+
+            return meal
     
         },           
 
@@ -81,8 +84,12 @@ export default {
             formData.append('name', this.newMeal.name);
             formData.append('description', this.newMeal.description);
             formData.append('ingredient_id', ingredients);
-            console.log(FormData);
+           
             this.$store.dispatch('meals/updateMeal', formData);
+
+            this.$router.go(-1);
+
+
         },
     },
 };

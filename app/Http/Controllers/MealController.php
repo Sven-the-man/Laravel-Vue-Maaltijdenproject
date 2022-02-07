@@ -30,11 +30,24 @@ class MealController extends Controller
         Meal::create($validated)->ingredients()->attach(explode(',', $validated['ingredient_id']));
     }
 
-    public function update(UpdateMealRequest $request)
+    public function update(UpdateMealRequest $request, Meal $meal)
     {
+
         //wip
+        
+        dd($request);
+        
         $validated = $request->validated();
+
         dd($validated);
+
+        $validated['image_name'] = Storage::put('images', new File($validated['image']), 'public');
+
+        $meal->update($validated);
+       
+        return MealResource::collection(Meal::all());
+        
+        
     }
 
     public function destroy(Request $request)
@@ -56,11 +69,10 @@ class MealController extends Controller
     }
 
 
-    public function availableMeals()
+    public function userMeals()
     {
-
-        $allMeals = MealResource::collection(Meal::all());
-
-        $userIngredients = Auth::user()->ingredients();
+        
+        return MealResource::collection(Meal::orderBy('created_at', 'desc')->get());
+        
     }
 }

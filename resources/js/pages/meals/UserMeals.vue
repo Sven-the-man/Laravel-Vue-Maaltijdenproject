@@ -30,6 +30,27 @@
     <div class="main">
       <div class="my_meals">
         <h2>Mogelijke maaltijden:</h2>
+        <div class="container">
+          <div class="navigation">
+            <b-pagination
+              :total-rows="totalRows"
+              v-model="currentPage"
+              :per-page="perPage"
+            />
+          </div>
+          <main class="grid" :v-if="meals">
+            <div class="article" v-for="meal in meals" :key="meal.id">
+              <div class="text">
+                <router-link
+                  :to="{ name: 'meal.show', params: { id: meal.id } }"
+                >
+                  <img :src="meal.image_name" />
+                </router-link>
+                <p>{{ meal.name }}</p>
+              </div>
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +65,8 @@ export default {
   data() {
     return {
       selectedIngredients: [],
+      currentPage: 1,
+      perPage: 15,
     };
   },
   computed: {
@@ -53,9 +76,21 @@ export default {
     ingredients() {
       return this.$store.getters["ingredients/getAll"];
     },
+    meals() {
+      const items = this.$store.getters["meals/getUserMeals"];
+
+      return items.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
+    },
+    totalRows() {
+      return this.$store.getters["meals/getUserMeals"].length;
+    },
   },
   mounted() {
     this.$store.dispatch("ingredients/setAll");
+    this.$store.dispatch("meals/setUserMeals");
   },
   methods: {
     updateUserIngredients() {
@@ -89,6 +124,7 @@ export default {
   text-align: center;
 }
 .add_ingredients {
+  padding-top: 20px;
   text-align: center;
 }
 

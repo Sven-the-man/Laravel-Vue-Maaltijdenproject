@@ -25,9 +25,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //meal api routes
 Route::get('/meals', [MealController::class, 'index']);
 Route::get('/meals/{meal}', [MealController::class, 'show']);
+Route::get('/meals/user', [MealController::class, 'userMeals']);
 Route::post('/meals/create', [MealController::class, 'store']);
-Route::post('meals/update', [MealController::class, 'update']);
+Route::post('meals/{meal}/update', [MealController::class, 'update']);
 Route::post('meals/remove', [mealController::class, 'destroy']);
+
 
 
 // ingredient routes

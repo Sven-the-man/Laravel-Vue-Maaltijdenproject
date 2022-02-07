@@ -24,10 +24,9 @@ class UpdateMealRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
             'name' => 'required|sometimes',
             'description' => 'required|sometimes',
-            'image' => 'required|file|sometimes',
+            'image' => 'file|sometimes',
             'ingredient_id' => 'required|sometimes',
 
         ];

@@ -4,7 +4,7 @@ export const meals = {
     getters: {
         getAll: state => state.all,
         getById: state => id => state.all.find(item => item.id === id),
-        getCurrentMeal: state => id => state.all.find(item => item.id == id),
+        getUserMeals: state => state.all,
     },
     mutations: {
         SET_ALL: (state, payload) => (state.all = payload),
@@ -12,6 +12,10 @@ export const meals = {
     actions: {
         async setAll({commit}) {
             const {data} = await axios.get('/meals');
+            commit('SET_ALL', data);
+        },
+        async setUserMeals({commit}) {
+            const {data} = await axios.get('/meals/user');
             commit('SET_ALL', data);
         },
         async createMeal({commit}, payload) {
@@ -25,7 +29,7 @@ export const meals = {
         },
 
         async updateMeal({commit}, payload) {
-            const {data} = await axios.post('meals/update', {mealId: payload});
+            const {data} = await axios.post(`meals/${payload.get('id')}/update`, {payload});
             commit('SET_ALL', data);
         },
 
