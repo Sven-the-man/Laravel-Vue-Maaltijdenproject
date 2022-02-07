@@ -1,105 +1,104 @@
 <template>
-    <div class="container">
-      <div class="column left">
-          <div class="add_ingredients">
-            <h2>Nieuwe ingredienten</h2>
-            <form enctype="multipart/form-data" @submit.prevent="updateUserIngredients">
-            <multiselect
-                    v-model="selectedIngredients"
-                    :options="ingredients"
-                    track-by="id"
-                    label="name"
-                    multiple
-                    :close-on-select="false"
-                />
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-          </div>
-          <div class="my_ingredients">
-            <h2> Mijn ingredienten </h2>
-                <li v-for="ingredient in user.ingredients" :key="ingredient.id">
-                    {{ ingredient.name }}
-                </li>
-          </div>
-        </div>
-        <div class="column right">
-            <div class="my_meals">
-                <h2>Mogelijke maaltijden:</h2>
-            </div>
-        </div>
-        
+  <div class="container">
+    <div class="sidebar">
+      <div class="add_ingredients">
+        <h2>Nieuwe ingredienten</h2>
+        <form
+          enctype="multipart/form-data"
+          @submit.prevent="updateUserIngredients"
+        >
+          <multiselect
+            v-model="selectedIngredients"
+            :options="ingredients"
+            track-by="id"
+            label="name"
+            multiple
+            :close-on-select="false"
+          />
+          <button type="submit" class="btn btn-primary mr-1">Pas aan</button>
+        </form>
       </div>
+      <div class="user_ingredients">
+        <h2>Mijn ingredienten</h2>
+        <div class="list">
+          <li v-for="ingredient in user.ingredients" :key="ingredient.id">
+            {{ ingredient.name }}
+          </li>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="my_meals">
+        <h2>Mogelijke maaltijden:</h2>
+      </div>
+    </div>
+  </div>
 </template>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <script>
-import Multiselect from 'vue-multiselect'
+import Multiselect from "vue-multiselect";
 export default {
-   components: {
-    Multiselect
+  components: {
+    Multiselect,
   },
-  data(){
+  data() {
     return {
-      selectedIngredients: []
-    }
+      selectedIngredients: [],
+    };
   },
   computed: {
     user() {
       return this.$store.getters["account/get"];
     },
     ingredients() {
-     return this.$store.getters["ingredients/getAll"]
+      return this.$store.getters["ingredients/getAll"];
     },
   },
   mounted() {
-    this.$store.dispatch('ingredients/setAll')
+    this.$store.dispatch("ingredients/setAll");
   },
   methods: {
-        updateUserIngredients() {
-    
-          const ingredients = this.selectedIngredients.map(select => select.id);
-          this.$store.dispatch('ingredients/update', ingredients);
-        }
+    updateUserIngredients() {
+      const ingredients = this.selectedIngredients.map((select) => select.id);
+      this.$store.dispatch("ingredients/update", ingredients);
+    },
   },
 };
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-
-/* Create two unequal columns that floats next to each other */
 .container {
-  width: 100%;
+  min-width: 60%;
 }
 
-.column {
-  float: left;
-  padding: 10px;
-  
+.sidebar {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 400px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding: 50px;
+  border: 1px solid black;
 }
 
-.left {
-  min-width: 25%;
-  border-right: 1px solid black;
-  text-align: left;
-  height: 1000px;
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+  text-align: center;
 }
-
-.right {
-  width: 75%;
+.add_ingredients {
   text-align: center;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.user_ingredients {
+  text-align: left;
+  padding-top: 20px;
 }
 
-.my_ingredients {
-  padding-top: 40px;
+.list {
   text-align: left;
+  padding-left: 15px;
 }
 </style>

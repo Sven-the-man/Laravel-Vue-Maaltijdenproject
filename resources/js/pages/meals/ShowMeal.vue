@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="meal">
     <div class="meal">
       <div class="title">
         <h1>{{ meal.name }}</h1>
@@ -10,7 +10,7 @@
       <div class="ingredients">
         <h3>Benodigdheden:</h3>
           <ul>
-            <li v-for="ingredient in meal.ingredient_id" :key="ingredient.id">
+            <li v-for="ingredient in meal.ingredients" :key="ingredient.id">
               {{ ingredient.name }}
             </li>
           </ul> 
@@ -27,8 +27,8 @@
 export default {
   computed: {
         meal() {
-            return this.$store.getters["meals/getById"](
-            parseInt(this.$route.params.id))
+            return this.$store.getters["meals/getCurrentMeal"](
+            parseInt(this.$route.params.id));
         },           
     },
     mounted() {

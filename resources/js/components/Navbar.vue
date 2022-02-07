@@ -36,7 +36,7 @@
 
 <style scoped>
 .navbar {
-  background: rgb(236, 227, 227);
+  background: white;
   width: 100%;
   height: 50px;
   border: 1px solid black;

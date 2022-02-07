@@ -1,9 +1,7 @@
-1. Meal update formdata blijft leeg bij toevoegen van data.
+1. Formdata om een meal te updaten geeft foutmeldingen en een lege request bij opsturen.
 
-2. Om de ingredienten van de gebruiker door te voeren, moet ik opnieuw in-en-uit loggen.
+2. Om de nieuwe ingredienten van de gebruiker door te voeren, moet ik opnieuw in-en-uit loggen.
 
-3. Bij het ophalen van de maaltijd, MealController@show, krijg ik geen pivot data mee.
 
-3. Formdata moet volledig gevuld zijn om een maaltijd te kunnen aanpassen.
 
 

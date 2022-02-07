@@ -83,9 +83,6 @@ export default {
             formData.append('ingredient_id', ingredients);
             console.log(FormData);
             this.$store.dispatch('meals/updateMeal', formData);
-
-
-            
         },
     },
 };
