@@ -5,11 +5,7 @@
     </div>
     <div class="add_ingredient">
       <form @submit.prevent="createIngredient">
-        <input
-            id="name"
-            v-model="ingredient.name"
-            type="text"
-          />
+        <input id="name" v-model="ingredient.name" type="text" />
         <button type="submit" class="btn btn-primary">Stuur op</button>
       </form>
     </div>
@@ -24,11 +20,13 @@
       <div class="mealTable">
         <table class="blueTable">
           <tbody>
-            <tr v-for="ingredient in ingredients" :key="ingredient.id">
+            <tr v-for="(ingredient) in ingredients" :key="ingredient.id">
               <td>{{ ingredient.name }}</td>
               <td>
-                <input type="text" :placeholder="ingredient.name" />
-                <button class="btn btn-primary">Bewerk</button>
+                <form>
+                  <input type="text" :placeholder="ingredient.name" />
+                  <button class="btn btn-primary">Update</button>
+                </form>
               </td>
             </tr>
           </tbody>
@@ -45,7 +43,7 @@ export default {
       currentPage: 1,
       perPage: 12,
       ingredient: {
-        name: null
+        name: null,
       },
     };
   },
@@ -65,11 +63,11 @@ export default {
     this.$store.dispatch("ingredients/setAll");
   },
   methods: {
-  createIngredient() {
+    createIngredient() {
       const ingredient = this.ingredient;
       this.$store.dispatch("ingredients/create", ingredient);
-  }
     },
+  },
 };
 </script>
 

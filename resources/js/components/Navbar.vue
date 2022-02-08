@@ -15,6 +15,7 @@
       <li class="nav-item">
         <router-link :to="{name: 'AdminPanel'}">Admin paneel</router-link>
       </li>
+      
     </ul>
   </nav>
 </template>

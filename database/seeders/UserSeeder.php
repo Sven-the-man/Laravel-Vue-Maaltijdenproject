@@ -26,8 +26,9 @@ class UserSeeder extends Seeder
                 $user->ingredients()->syncWithoutDetaching(rand(5, $ingredients));
                 }
             });
+
+        
         }
 
 
     }
-

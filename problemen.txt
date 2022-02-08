@@ -1,6 +1,8 @@
 
 
 Om de nieuwe ingredienten van de gebruiker door te voeren, moet ik opnieuw in-en-uit loggen.
+Ingredienten updaten geeft geen unieke v-model
+Hoe filter ik frontend meals?
 
 
 
