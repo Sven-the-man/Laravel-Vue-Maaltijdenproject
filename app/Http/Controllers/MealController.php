@@ -34,17 +34,14 @@ class MealController extends Controller
     public function update(UpdateMealRequest $request, Meal $meal)
     {
 
-        //wip
-
         dd($request);
-        
         $validated = $request->validated();
-
-        dd($validated);
 
         $validated['image_name'] = Storage::put('images', new File($validated['image']), 'public');
 
         $meal->update($validated);
+
+        dd($meal);
        
         return MealResource::collection(Meal::all());
         

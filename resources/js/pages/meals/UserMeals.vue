@@ -29,7 +29,7 @@
     </div>
     <div class="main">
       <div class="my_meals">
-        <h2>Mogelijke maaltijden:</h2>
+        <h2>Mijn maaltijden:</h2>
         <div class="container">
           <div class="navigation">
             <b-pagination
@@ -44,7 +44,7 @@
                 <router-link
                   :to="{ name: 'meal.show', params: { id: meal.id } }"
                 >
-                  <img :src="meal.image_name" />
+                  <img :src="'../' + meal.image_name">
                 </router-link>
                 <p>{{ meal.name }}</p>
               </div>

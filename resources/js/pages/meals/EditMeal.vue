@@ -8,11 +8,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Wijzig instructies:</label>
-                    <textarea id="description" v-model="newMeal.description" :placeholder="getPlaceholder()" class="form-control" />
+                    <textarea id="description" v-model="newMeal.description" class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="ingredients" class="form-label">Wijzig ingredienten:</label>
-                    <multiselect
+                    <multiselect v-if="ingredients"
                         v-model="newMeal.ingredients"
                         :options="ingredients"
                         track-by="id"
@@ -66,9 +66,7 @@ export default {
     },
 
     methods: {
-        getPlaceholder() {
-         return this.meal.description;
-       },
+
         dropDocument(event) {
             this.newMeal.image = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
         },

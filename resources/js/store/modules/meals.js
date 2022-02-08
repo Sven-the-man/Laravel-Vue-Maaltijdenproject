@@ -35,7 +35,6 @@ export const meals = {
 
         async getCurrentMeal({commit}, payload) {
             const {data} = await axios.get(`/meals/${payload.id}`);
-            console.log(data.ingredients)
             commit('SET_ALL', [data.meal]);
             commit('ingredients/SET_ALL', data.ingredients, {root: true});
         },

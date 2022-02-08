@@ -27,7 +27,7 @@
 export default {
   computed: {
         meal() {
-            return this.$store.getters["meals/getCurrentMeal"](
+            return this.$store.getters["meals/getById"](
             parseInt(this.$route.params.id));
         },           
     },
