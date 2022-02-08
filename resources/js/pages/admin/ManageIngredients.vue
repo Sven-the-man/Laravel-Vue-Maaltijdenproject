@@ -4,8 +4,12 @@
       <h2>Beheer ingredienten:</h2>
     </div>
     <div class="add_ingredient">
-      <form>
-        <input type="text" placeholder="Nieuw ingredient" />
+      <form @submit.prevent="createIngredient">
+        <input
+            id="name"
+            v-model="ingredient.name"
+            type="text"
+          />
         <button type="submit" class="btn btn-primary">Stuur op</button>
       </form>
     </div>
@@ -40,6 +44,9 @@ export default {
     return {
       currentPage: 1,
       perPage: 12,
+      ingredient: {
+        name: null
+      },
     };
   },
   computed: {
@@ -57,6 +64,12 @@ export default {
   mounted() {
     this.$store.dispatch("ingredients/setAll");
   },
+  methods: {
+  createIngredient() {
+      const ingredient = this.ingredient;
+      this.$store.dispatch("ingredients/create", ingredient);
+  }
+    },
 };
 </script>
 

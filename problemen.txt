@@ -1,11 +1,10 @@
-1. Formdata komt niet correct bij de controller aan: meal update
-
-2. Om de nieuwe ingredienten van de gebruiker door te voeren, moet ik opnieuw in-en-uit loggen.
 
 
-Kleine problemen:
+Om de nieuwe ingredienten van de gebruiker door te voeren, moet ik opnieuw in-en-uit loggen.
 
-Ik stuur alle ingredienten mee met de getCurrentMeal request, maar hoe krijg ik toegang tot deze ingredienten?
 
-Bij de "mijn maaltijden" worden de items alleen correct ingeladen bij een refresh?
+
+
+
+
 

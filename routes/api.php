@@ -33,6 +33,7 @@ Route::post('meals/remove', [mealController::class, 'destroy']);
 
 // ingredient routes
 Route::get('ingredients', [IngredientController::class, 'index']);
+Route::post('ingredients/create', [IngredientController::class, 'store']);
 
 //user ingredient routes
 Route::get('user/ingredients', [UserController::class, 'getUserIngredients']);
