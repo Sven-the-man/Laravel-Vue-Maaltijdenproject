@@ -33,19 +33,17 @@ class MealController extends Controller
 
     public function update(UpdateMealRequest $request, Meal $meal)
     {
-
-        dd($request);
         $validated = $request->validated();
 
-        $validated['image_name'] = Storage::put('images', new File($validated['image']), 'public');
+        if ($request->hasFile('image_name')) {
+            $validated['image_name'] = Storage::put('images', new File($validated['image']), 'public');
+        };
 
         $meal->update($validated);
 
-        dd($meal);
-       
+        $meal->ingredients()->sync(explode(',', $validated['ingredient_id']));
+
         return MealResource::collection(Meal::all());
-        
-        
     }
 
     public function destroy(Request $request)
@@ -63,14 +61,13 @@ class MealController extends Controller
     public function show(Meal $meal)
     {
 
-        return response()->json(['meal' => $meal->load('ingredients')]);
+        return response()->json(['meal' => $meal->load('ingredients'), 'ingredients' => Ingredient::all()]);
     }
 
 
     public function userMeals()
     {
-        
+
         return MealResource::collection(Meal::orderBy('created_at', 'desc')->get());
-        
     }
 }

@@ -24,6 +24,12 @@ class UserController extends Controller
         return Auth::user()->ingredients;
     }
 
-    
+    public function update(Request $request)
+    {
+
+        Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
+
+        return Auth::user()->ingredients;
+    }
 }
 

@@ -95,7 +95,7 @@ export default {
   methods: {
     updateUserIngredients() {
       const ingredients = this.selectedIngredients.map((select) => select.id);
-      this.$store.dispatch("ingredients/update", ingredients);
+      this.$store.dispatch("ingredients/updateUserIngredients", ingredients);
     },
   },
 };

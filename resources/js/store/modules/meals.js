@@ -29,7 +29,7 @@ export const meals = {
         },
 
         async updateMeal({commit}, payload) {
-            const {data} = await axios.post(`meals/${payload.get('id')}/update`, {payload});
+            const {data} = await axios.post(`meals/${payload.get('id')}/update`, payload);
             commit('SET_ALL', data);
         },
 

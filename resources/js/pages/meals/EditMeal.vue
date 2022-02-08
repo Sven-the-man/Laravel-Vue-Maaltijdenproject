@@ -62,7 +62,6 @@ export default {
     },
     mounted() {
         this.$store.dispatch('meals/getCurrentMeal', { id: parseInt(this.$route.params.id) } );
-        this.$store.dispatch('ingredients/setAll');
     },
 
     methods: {

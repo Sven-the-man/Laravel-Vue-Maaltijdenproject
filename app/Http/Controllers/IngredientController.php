@@ -17,9 +17,11 @@ class IngredientController extends Controller
     public function update(Request $request)
     {
 
+    }
 
-        Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
+    public function store(Request $request)
+    {
+        
 
-        return Auth::user()->ingredients;
     }
 }

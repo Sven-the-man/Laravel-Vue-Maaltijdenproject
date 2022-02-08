@@ -36,7 +36,7 @@ Route::get('ingredients', [IngredientController::class, 'index']);
 
 //user ingredient routes
 Route::get('user/ingredients', [UserController::class, 'getUserIngredients']);
-Route::post('user/ingredients/update', [IngredientController::class, 'update']);
+Route::post('user/ingredients/update', [UserController::class, 'update']);
 Route::get('/user/meals', [MealController::class, 'userMeals']);
 
 //authentication routes
