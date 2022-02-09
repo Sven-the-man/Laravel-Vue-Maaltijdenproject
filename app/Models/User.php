@@ -44,4 +44,5 @@ class User extends Authenticatable
     function ingredients() {
         return $this->belongsToMany(Ingredient::class);
     }
+
 }

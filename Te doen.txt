@@ -1,0 +1,17 @@
+
+Toe te voegen:
+Het data component van newIngredient heeft geen verwijzing welke van de ingredients nou geupdated moet worden
+Filteren van userMeals op basis van overeenkomende ingredienten
+"Ik heb de maaltijd gemaakt" systeem bouwen.
+
+Problemen:
+Om de nieuwe ingredienten van de gebruiker door te voeren, moet ik opnieuw in-en-uit loggen.
+
+
+
+
+User 'has'  meal -> then find if User->meals()->contains({{this.nmeal.id}})
+
+
+
+

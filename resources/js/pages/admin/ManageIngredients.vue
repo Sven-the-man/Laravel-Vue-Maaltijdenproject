@@ -20,11 +20,11 @@
       <div class="mealTable">
         <table class="blueTable">
           <tbody>
-            <tr v-for="(ingredient) in ingredients" :key="ingredient.id">
+            <tr v-for="(ingredient, index) in ingredients" :key="ingredient.id">
               <td>{{ ingredient.name }}</td>
               <td>
-                <form>
-                  <input type="text" :placeholder="ingredient.name" />
+                <form @submit.prevent="updateIngredient(newIngredient[index], ingredient.id)">
+                  <input v-model="newIngredient[index]" type="text" :placeholder="ingredient.name" />
                   <button class="btn btn-primary">Update</button>
                 </form>
               </td>
@@ -45,6 +45,8 @@ export default {
       ingredient: {
         name: null,
       },
+      newIngredient: []
+        
     };
   },
   computed: {
@@ -66,6 +68,9 @@ export default {
     createIngredient() {
       const ingredient = this.ingredient;
       this.$store.dispatch("ingredients/create", ingredient);
+    },
+    updateIngredient(name, id) {
+      this.$store.dispatch("ingredients/update", {name, id});
     },
   },
 };
