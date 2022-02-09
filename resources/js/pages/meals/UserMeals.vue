@@ -47,7 +47,7 @@
                   <img :src="'../' + meal.image_name">
                 </router-link>
                 <p>{{ meal.name }}</p>
-                <p style="color:green" v-if="true">Maaltijd gemaakt!</p>
+                <p style="color:green" v-if="checkIfMade(meal.id)">Maaltijd gemaakt!</p>
               </div>
             </div>
           </main>
@@ -98,7 +98,11 @@ export default {
       const ingredients = this.selectedIngredients.map((select) => select.id);
       this.$store.dispatch("ingredients/updateUserIngredients", ingredients);
     },
-  },
+    checkIfMade(id) {
+      const userMeals = this.user.meal
+      if(UserMeals
+      };
+    },
 };
 </script>
 

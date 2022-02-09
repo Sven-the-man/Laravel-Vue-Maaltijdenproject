@@ -15,10 +15,10 @@ class Ingredient extends Model
         'category'
     ];
     function meals() {
-        $this->belongsToMany(Meal::class);
+        return $this->belongsToMany(Meal::class);
     }
 
     function user() {
-        $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }
