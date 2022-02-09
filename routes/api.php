@@ -34,11 +34,12 @@ Route::get('ingredients', [IngredientController::class, 'index']);
 Route::post('ingredients/create', [IngredientController::class, 'store']);
 Route::post('ingredients/update', [IngredientController::class, 'update']);
 
-//user ingredient routes
+//user routes
 Route::get('user/ingredients', [UserController::class, 'getUserIngredients']);
 Route::post('user/ingredients/update', [UserController::class, 'update']);
-Route::get('/user/meals', [MealController::class, 'userMeals']);
+Route::post('user/meals/make', [UserController::class. 'makeMeal']);
 
 //authentication routes
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
+

@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserIngredientsRequest;
 use App\Http\Resources\IngredientResource;
-use App\Http\Resources\UserResource;
 use App\Models\Ingredient;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +27,14 @@ class UserController extends Controller
         Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
 
         return Auth::user()->ingredients;
+    }
+
+    public function makeMeal(Request $request) {
+
+        Auth::user()->meals()->attach($request->get('meal_id'));
+
+        return Auth::user()->meals;
+
     }
 }
 

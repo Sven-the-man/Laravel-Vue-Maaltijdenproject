@@ -47,6 +47,7 @@
                   <img :src="'../' + meal.image_name">
                 </router-link>
                 <p>{{ meal.name }}</p>
+                <p style="color:green" v-if="true">Maaltijd gemaakt!</p>
               </div>
             </div>
           </main>
@@ -77,7 +78,7 @@ export default {
       return this.$store.getters["ingredients/getAll"];
     },
     meals() {
-      const items = this.$store.getters["meals/getUserMeals"];
+      const items = this.$store.getters["meals/getAll"];
 
       return items.slice(
         (this.currentPage - 1) * this.perPage,
@@ -85,12 +86,12 @@ export default {
       );
     },
     totalRows() {
-      return this.$store.getters["meals/getUserMeals"].length;
+      return this.$store.getters["meals/getAll"].length;
     },
   },
   mounted() {
     this.$store.dispatch("ingredients/setAll");
-    this.$store.dispatch("meals/setUserMeals");
+    this.$store.dispatch("meals/setAll");
   },
   methods: {
     updateUserIngredients() {

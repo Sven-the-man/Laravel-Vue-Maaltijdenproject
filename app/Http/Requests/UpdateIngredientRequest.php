@@ -25,6 +25,7 @@ class UpdateIngredientRequest extends FormRequest
     {
         return [
             
+            'id' => 'required',
             'name' => 'required'
         ];
     }

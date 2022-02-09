@@ -23,4 +23,8 @@ class Meal extends Model
         return $this->belongsToMany(Ingredient::class);
     }
 
+    function users() {
+        return $this->hasMany(User::class);
+    }
+
 }

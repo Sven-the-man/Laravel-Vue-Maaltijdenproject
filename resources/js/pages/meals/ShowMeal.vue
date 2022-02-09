@@ -1,6 +1,12 @@
 <template>
   <div class="container" v-if="meal">
     <div class="meal">
+      <div v-if="true" class="madeMealQuestion">
+        <p>Deze maaltijd gemaakt?</p> <img @click="submitMake" class="thumbs_up" src="../images/thumbs_up.jpg">
+      </div>
+      <div v-if="false" class="madeMealQuestion">
+        <p>Je hebt deze maaltijd gemaakt!</p> <img  class="thumbs_up" src="../images/thumbs_up.jpg">
+      </div>
       <div class="title">
         <h1>{{ meal.name }}</h1>
       </div>
@@ -34,6 +40,11 @@ export default {
     mounted() {
         this.$store.dispatch('meals/getCurrentMeal', {id: parseInt(this.$route.params.id)});
     },
+  methods: {
+    submitMake() {
+      return console.log()
+    }
+  }
 };
 </script>
 
@@ -58,7 +69,6 @@ export default {
 
 img {
   width: 40%;
-  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
   margin: 20px;
 }
 .image {
@@ -70,5 +80,14 @@ img {
 .instructions {
   border-bottom: 1px solid grey;
   margin: 20px;
+}
+
+.madeMealQuestion {
+  text-align: center;
+  font-size: 30px;
+}
+
+.thumbs_up {
+  width: 150px;
 }
 </style>

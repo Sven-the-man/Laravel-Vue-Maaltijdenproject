@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateMealRequest;
 use App\Http\Requests\StoreMealRequest;
 use App\Http\Resources\MealResource;
-use App\Http\Models\User;
 use App\Models\Ingredient;
 use Illuminate\Http\File;
 use App\Models\Meal;
@@ -64,10 +63,4 @@ class MealController extends Controller
         return response()->json(['meal' => $meal->load('ingredients'), 'ingredients' => Ingredient::all()]);
     }
 
-
-    public function userMeals()
-    {
-
-        return MealResource::collection(Meal::orderBy('created_at', 'desc')->get());
-    }
 }
