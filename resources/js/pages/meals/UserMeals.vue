@@ -26,10 +26,18 @@
           </li>
         </div>
       </div>
+      <div class="user_ingredients">
+        <h4>Gemaakte maaltijden (debug)</h4>
+        <div class="list">
+          <li v-for="meal in user.meals" :key="meal.id">
+            {{ meal.id }}
+          </li>
+        </div>
+      </div>
     </div>
     <div class="main">
       <div class="my_meals">
-        <h2>Mijn maaltijden:</h2>
+        <h2>Voor deze maaltijden heb je alle ingredienten in huis!</h2>
         <div class="container">
           <div class="navigation">
             <b-pagination
@@ -44,10 +52,12 @@
                 <router-link
                   :to="{ name: 'meal.show', params: { id: meal.id } }"
                 >
-                  <img :src="'../' + meal.image_name">
+                  <img :src="'../' + meal.image_name" />
                 </router-link>
                 <p>{{ meal.name }}</p>
-                <p style="color:green" v-if="checkIfMade(meal.id)">Maaltijd gemaakt!</p>
+                <p style="color: green" v-if="meal.isMade">
+                  Maaltijd gemaakt!
+                </p>
               </div>
             </div>
           </main>
@@ -78,8 +88,19 @@ export default {
       return this.$store.getters["ingredients/getAll"];
     },
     meals() {
-      const items = this.$store.getters["meals/getAll"];
+      let items = this.$store.getters["meals/getAll"];
 
+      const userMealIds = this.user.meals.map(meal => meal.id);
+
+      items = items.map(meal => {
+          let result = userMealIds.find(element => { 
+            return element === meal.id 
+            });
+
+          const isMade = result !== undefined;
+          return { ...meal, isMade }
+      });
+    
       return items.slice(
         (this.currentPage - 1) * this.perPage,
         this.currentPage * this.perPage
@@ -98,11 +119,11 @@ export default {
       const ingredients = this.selectedIngredients.map((select) => select.id);
       this.$store.dispatch("ingredients/updateUserIngredients", ingredients);
     },
-    checkIfMade(id) {
-      const userMeals = this.user.meal
-      if(UserMeals
-      };
+    checkIfMealisMade(id) {
+      let userMeals = this.user.meals;
+      console.log(userMeals);
     },
+  },
 };
 </script>
 

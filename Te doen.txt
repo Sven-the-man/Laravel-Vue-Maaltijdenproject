@@ -10,8 +10,3 @@ Om de nieuwe ingredienten van de gebruiker door te voeren, moet ik opnieuw in-en
 
 
 
-User 'has'  meal -> then find if User->meals()->contains({{this.nmeal.id}})
-
-
-
-
