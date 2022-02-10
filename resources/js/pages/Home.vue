@@ -14,7 +14,6 @@
             <img :src="meal.image_name">
           </router-link>
           <p>{{meal.name}}</p>
-          <p style="color:green" v-if="true">Maaltijd gemaakt!</p>
         </div>
       </div>
     </main>

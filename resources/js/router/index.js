@@ -23,6 +23,9 @@ const router = new VueRouter({
             path: '/meals/:id',
             component: ShowMeal,
             name: 'meal.show',
+            meta: {
+                shouldBeLoggedIn: true,
+            },
         },
         {
             path: '/meals/:id/edit',

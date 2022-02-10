@@ -2,24 +2,30 @@
   <div class="container" v-if="meal">
     <div class="meal">
       <div v-if="true" class="madeMealQuestion">
-        <p>Deze maaltijd gemaakt?</p> <img @click="submitMake" class="thumbs_up" src="../images/thumbs_up.jpg">
+        <p>Deze maaltijd gemaakt?</p>
+        <img
+          @click="submitMake"
+          class="thumbs_up"
+          src="../images/thumbs_up.jpg"
+        />
       </div>
       <div v-if="false" class="madeMealQuestion">
-        <p>Je hebt deze maaltijd gemaakt!</p> <img  class="thumbs_up" src="../images/thumbs_up.jpg">
+        <p>Je hebt deze maaltijd gemaakt!</p>
+        <img class="thumbs_up" src="../images/thumbs_up.jpg" />
       </div>
       <div class="title">
         <h1>{{ meal.name }}</h1>
       </div>
       <div class="image">
-        <img :src="'../' + meal.image_name">
+        <img :src="'../' + meal.image_name" />
       </div>
       <div class="ingredients">
         <h3>Benodigdheden:</h3>
-          <ul>
-            <li v-for="ingredient in meal.ingredients" :key="ingredient.id">
-              {{ ingredient.name }}
-            </li>
-          </ul> 
+        <ul>
+          <li v-for="ingredient in meal.ingredients" :key="ingredient.id">
+            {{ ingredient.name }}
+          </li>
+        </ul>
       </div>
       <div class="instructions">
         <h3>Bereidingswijze:</h3>
@@ -32,24 +38,41 @@
 <script>
 export default {
   computed: {
-        meal() {
-            return this.$store.getters["meals/getById"](
-            parseInt(this.$route.params.id));
-        },           
+    user() {
+      return this.$store.getters["account/get"];
     },
-    mounted() {
-        this.$store.dispatch('meals/getCurrentMeal', {id: parseInt(this.$route.params.id)});
+    meal() {
+      const currentMeal = this.$store.getters["meals/getById"](
+        parseInt(this.$route.params.id)
+      );
+
+      const userMealIds = this.user.meals.map((meal) => meal.id);
+
+      let result = userMealIds.find(element => element === 1);
+
+      
+
+
+       
+     
+       return currentMeal;
+      
     },
+  },
+  mounted() {
+    this.$store.dispatch("meals/getCurrentMeal", {
+      id: parseInt(this.$route.params.id),
+    });
+  },
   methods: {
     submitMake() {
-      return console.log()
-    }
-  }
+      return console.log();
+    },
+  },
 };
 </script>
 
 <style scoped>
-
 .container {
   text-align: left;
   width: 50%;

@@ -55,9 +55,7 @@
                   <img :src="'../' + meal.image_name" />
                 </router-link>
                 <p>{{ meal.name }}</p>
-                <p style="color: green" v-if="meal.isMade">
-                  Maaltijd gemaakt!
-                </p>
+                <p style="color: green" v-if="meal.isMade">Maaltijd gemaakt!</p>
               </div>
             </div>
           </main>
@@ -90,17 +88,24 @@ export default {
     meals() {
       let items = this.$store.getters["meals/getAll"];
 
-      const userMealIds = this.user.meals.map(meal => meal.id);
+      // filters meals where the user has all the ingredients for
+      const userIngredientIds = this.user.ingredients.map(
+        (ingredient) => ingredient.id
+      );
 
-      items = items.map(meal => {
-          let result = userMealIds.find(element => { 
-            return element === meal.id 
-            });
+      // check if user has already made this meal
+      const userMealIds = this.user.meals.map((meal) => meal.id);
 
-          const isMade = result !== undefined;
-          return { ...meal, isMade }
+      items = items.map((meal) => {
+        let result = userMealIds.find((element) => {
+          return element === meal.id;
+        });
+
+        const isMade = result !== undefined;
+        return { ...meal, isMade };
       });
-    
+      
+      // slices and paginates the result
       return items.slice(
         (this.currentPage - 1) * this.perPage,
         this.currentPage * this.perPage
