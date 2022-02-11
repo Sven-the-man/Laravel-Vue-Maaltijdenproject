@@ -27,6 +27,8 @@ class UserController extends Controller
         Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
 
         return Auth::user()->ingredients;
+
+    }
     }
 
     public function makeMeal(Request $request) {
