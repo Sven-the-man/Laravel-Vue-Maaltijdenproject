@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMakeRequest extends FormRequest
+class StoreMakeUserMealRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreMakeRequest extends FormRequest
     public function rules()
     {
         return [
-            'meal_id' => 'required'
+           'id' => 'required'
         ];
     }
 }

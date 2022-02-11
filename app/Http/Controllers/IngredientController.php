@@ -41,5 +41,5 @@ class IngredientController extends Controller
 
         return IngredientResource::collection(Ingredient::all()->sortByDesc("created_at"));
 
-        
+    }
 }

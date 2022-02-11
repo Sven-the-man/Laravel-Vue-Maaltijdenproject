@@ -37,7 +37,7 @@ Route::post('ingredients/update', [IngredientController::class, 'update']);
 //user routes
 Route::get('user/ingredients', [UserController::class, 'getUserIngredients']);
 Route::post('user/ingredients/update', [UserController::class, 'update']);
-Route::post('user/meals/make', [UserController::class. 'makeMeal']);
+Route::post('user/makeUserMeal', [UserController::class, 'makeUserMeal']);
 
 //authentication routes
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);

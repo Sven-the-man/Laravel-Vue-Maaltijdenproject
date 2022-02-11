@@ -2,19 +2,17 @@
     <div class="container" v-if="meal">
         <div class="meal">
             <div class="madeMealQuestion">
-                <p v-if="meal.isMade" style="color: green">
-                    Je hebt deze maaltijd gemaakt!
-                </p>
-                <p v-else>Je hebt deze maaltijd nog niet gemaakt....</p>
-                <img
-                    @click="submitMake"
-                    class="thumbs_up"
+                <p v-if="meal.isMade" style="color:green" >Je hebt deze maaltijd gemaakt!</p>
+                <p v-else> Je hebt deze maaltijd nog niet gemaakt.... </p>
+                <img v-if="meal.isMade"
+                    class="thumbs"
                     src="../images/thumbs_up.jpg"
                 />
-            </div>
-            <div v-if="false" class="madeMealQuestion">
-                <p>Je hebt deze maaltijd gemaakt!</p>
-                <img class="thumbs_up" src="../images/thumbs_up.jpg" />
+                <img v-else
+                    @click="submitMake"
+                    class="thumbs"
+                    src="../images/thumbs_down.jpg"
+                />
             </div>
             <div class="title">
                 <h1>{{ meal.name }}</h1>
@@ -43,40 +41,37 @@
 
 <script>
 export default {
-    computed: {
-        user() {
-            return this.$store.getters["account/get"];
-        },
-        meal() {
-            const currentMeal = this.$store.getters["meals/getById"](
-                parseInt(this.$route.params.id)
-            );
-
-            const userMealIds = this.user.meals.map((meal) => meal.id);
-
-            let result = userMealIds.find((element) => {
-                return element == currentMeal["id"];
-            });
-
-            const isMade = result !== undefined;
-
-            if (isMade) {
-                return { ...currentMeal, isMade };
-            }
-
-            return currentMeal;
-        },
+  computed: {
+    user() {
+      return this.$store.getters["account/get"];
     },
-    mounted() {
-        this.$store.dispatch("meals/getCurrentMeal", {
-            id: parseInt(this.$route.params.id),
-        });
+    meal() {
+
+      const currentMeal = this.$store.getters["meals/getById"]( parseInt(this.$route.params.id) );
+
+      const userMealIds = this.user.meals.map((meal) => meal.id);
+
+      let result = userMealIds.find((element) => {return element == currentMeal['id']});
+
+      const isMade = result !== undefined;
+
+      if(isMade) {return { ...currentMeal, isMade }}
+    
+      return currentMeal;
+
     },
-    methods: {
-        submitMake() {
-            return console.log();
-        },
+  },
+  mounted() {
+    this.$store.dispatch("meals/getCurrentMeal", {
+      id: parseInt(this.$route.params.id),
+    });
+  },
+  methods: {
+    submitMake() {
+      const meal_id = this.meal['id'];
+      this.$store.dispatch("user/makeUserMeal", meal_id);
     },
+  },
 };
 </script>
 
@@ -118,7 +113,7 @@ img {
     font-size: 30px;
 }
 
-.thumbs_up {
+.thumbs {
     width: 150px;
 }
 </style>

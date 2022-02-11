@@ -21,7 +21,7 @@
       <div class="user_ingredients">
         <h2>Mijn ingredienten</h2>
         <div class="list">
-          <li v-for="ingredient in user.ingredients" :key="ingredient.id">
+          <li v-for="ingredient in userIngredients" :key="ingredient.id">
             {{ ingredient.name }}
           </li>
         </div>
@@ -79,6 +79,9 @@ export default {
     };
   },
   computed: {
+    userIngredients() {
+      return this.$store.getters["user/getAll"].ingredients;
+    },
     user() {
       return this.$store.getters["account/get"];
     },
@@ -122,11 +125,7 @@ export default {
   methods: {
     updateUserIngredients() {
       const ingredients = this.selectedIngredients.map((select) => select.id);
-      this.$store.dispatch("ingredients/updateUserIngredients", ingredients);
-    },
-    checkIfMealisMade(id) {
-      let userMeals = this.user.meals;
-      console.log(userMeals);
+      this.$store.dispatch("user/updateUserIngredients", ingredients);
     },
   },
 };
