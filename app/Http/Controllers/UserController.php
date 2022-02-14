@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         
-        return IngredientResource::collection(Ingredient::all());
+        return new UserResource(Auth::user());
     }
 
     public function getUserIngredients() {
@@ -25,8 +25,6 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-
-       
 
         Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
 

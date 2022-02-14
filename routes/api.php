@@ -22,8 +22,8 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-//meal api routes
-Route::get('/meals', [MealController::class, 'index']);
+//meal routes
+Route::get('meals/', [MealController::class, 'index']);
 Route::get('/meals/{meal}', [MealController::class, 'show']);
 Route::post('/meals/create', [MealController::class, 'store']);
 Route::post('meals/{meal}/update', [MealController::class, 'update']);
@@ -35,6 +35,7 @@ Route::post('ingredients/create', [IngredientController::class, 'store']);
 Route::post('ingredients/update', [IngredientController::class, 'update']);
 
 //user routes
+Route::get('user/meals', [UserController::class, 'index']);
 Route::get('user/ingredients', [UserController::class, 'getUserIngredients']);
 Route::post('user/ingredients/update', [UserController::class, 'update']);
 Route::post('user/makeUserMeal', [UserController::class, 'makeUserMeal']);

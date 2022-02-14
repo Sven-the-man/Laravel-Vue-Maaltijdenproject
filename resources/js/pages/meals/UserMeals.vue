@@ -126,6 +126,8 @@ export default {
   mounted() {
     this.$store.dispatch("ingredients/setAll");
     this.$store.dispatch("meals/setAll");
+    
+   
   },
   methods: {
     updateUserIngredients() {

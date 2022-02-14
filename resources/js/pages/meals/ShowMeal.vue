@@ -2,13 +2,17 @@
     <div class="container" v-if="meal">
         <div class="meal">
             <div class="madeMealQuestion">
-                <p v-if="meal.isMade" style="color:green" >Je hebt deze maaltijd gemaakt!</p>
-                <p v-else> Je hebt deze maaltijd nog niet gemaakt.... </p>
-                <img v-if="meal.isMade"
+                <p v-if="meal.isMade" style="color: green">
+                    Je hebt deze maaltijd gemaakt!
+                </p>
+                <p v-else>Je hebt deze maaltijd nog niet gemaakt....</p>
+                <img
+                    v-if="meal.isMade"
                     class="thumbs"
                     src="../images/thumbs_up.jpg"
                 />
-                <img v-else
+                <img
+                    v-else
                     @click="submitMake"
                     class="thumbs"
                     src="../images/thumbs_down.jpg"
@@ -41,40 +45,46 @@
 
 <script>
 export default {
-  computed: {
-    user() {
-      return this.$store.getters["account/get"];
+    computed: {
+        user() {
+            return this.$store.getters["account/get"];
+        },
+        userMeals() {
+            return this.$store.getters["user/getAll"].meals;
+        },
+        meal() {
+           
+
+            const currentMeal = this.$store.getters["meals/getById"](
+                parseInt(this.$route.params.id)
+            );
+
+            // const userMealIds = userMeals.map((meal) => meal.id);
+
+            // let result = userMealIds.find((element) => {
+            //     return element == currentMeal["id"];
+            // });
+
+            // const isMade = result !== undefined;
+
+            // if (isMade) {
+            //     return { ...currentMeal, isMade };
+            // }
+
+            return currentMeal;
+        },
     },
-    userMeals() {
-      return this.$store.getters["user/getAll"].meals;
+    mounted() {
+        this.$store.dispatch("meals/getCurrentMeal", {
+            id: parseInt(this.$route.params.id),
+        });
     },
-    meal() {
-
-      const currentMeal = this.$store.getters["meals/getById"]( parseInt(this.$route.params.id) );
-
-      const userMealIds = this.user.meals.map((meal) => meal.id);
-
-      let result = userMealIds.find((element) => {return element == currentMeal['id']});
-
-      const isMade = result !== undefined;
-
-      if(isMade) {return { ...currentMeal, isMade }}
-    
-      return currentMeal;
-
+    methods: {
+        submitMake() {
+            const mealId = { meal_id: this.meal["id"] };
+            this.$store.dispatch("user/makeUserMeal", mealId);
+        },
     },
-  },
-  mounted() {
-    this.$store.dispatch("meals/getCurrentMeal", {
-      id: parseInt(this.$route.params.id),
-    });
-  },
-  methods: {
-    submitMake() {
-      const mealId = {meal_id: this.meal['id']};
-      this.$store.dispatch("user/makeUserMeal", mealId);
-    },
-  },
 };
 </script>
 
