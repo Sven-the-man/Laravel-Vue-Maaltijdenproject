@@ -45,6 +45,9 @@ export default {
     user() {
       return this.$store.getters["account/get"];
     },
+    userMeals() {
+      return this.$store.getters["user/getAll"].meals;
+    },
     meal() {
 
       const currentMeal = this.$store.getters["meals/getById"]( parseInt(this.$route.params.id) );
@@ -68,8 +71,8 @@ export default {
   },
   methods: {
     submitMake() {
-      const meal_id = this.meal['id'];
-      this.$store.dispatch("user/makeUserMeal", meal_id);
+      const mealId = {meal_id: this.meal['id']};
+      this.$store.dispatch("user/makeUserMeal", mealId);
     },
   },
 };

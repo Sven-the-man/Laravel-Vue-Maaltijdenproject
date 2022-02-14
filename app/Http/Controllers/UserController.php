@@ -35,12 +35,12 @@ class UserController extends Controller
     }
 
 
-    public function makeUserMeal(StoreMakeUserMealRequest $request) {
+    public function makeUserMeal(Request $request) {
 
-        $validated = $request->validated();
-        dd($validated);
-        Auth::user()->meals()->attach($validated->get('meal_id'));
-
+       
+       Auth::user()->meals()->attach($request->get('meal_id'));
+    
+        
     }
 }
 

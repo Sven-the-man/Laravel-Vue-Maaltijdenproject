@@ -24,7 +24,7 @@ class StoreMakeUserMealRequest extends FormRequest
     public function rules()
     {
         return [
-           'id' => 'required'
+           'meal_id' => 'required'
         ];
     }
 }

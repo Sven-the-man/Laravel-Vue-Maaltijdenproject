@@ -29,7 +29,7 @@
       <div class="user_ingredients">
         <h4>Gemaakte maaltijden (debug)</h4>
         <div class="list">
-          <li v-for="meal in user.meals" :key="meal.id">
+          <li v-for="meal in userMeals" :key="meal.id">
             {{ meal.id }}
           </li>
         </div>
@@ -82,6 +82,9 @@ export default {
     userIngredients() {
       return this.$store.getters["user/getAll"].ingredients;
     },
+    userMeals() {
+      return this.$store.getters["user/getAll"].meals;
+    },
     user() {
       return this.$store.getters["account/get"];
     },
@@ -96,8 +99,7 @@ export default {
         (ingredient) => ingredient.id);
 
       // returns only the meals where the user has all the required ingredients for
-      const filteredMeals = meals.map((meal) => meal.ingredient_id);
-      console.log(filteredMeals);
+      // const mappedMealIngredients = meals.map(meal => meal.ingredient_id.map(ingredient => ingredient.id));
     
       // check if user has already made the remaining meals
       const userMealIds = this.user.meals.map((meal) => meal.id);
