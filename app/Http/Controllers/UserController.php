@@ -41,10 +41,6 @@ class UserController extends Controller
         dd($validated);
         Auth::user()->meals()->attach($validated->get('meal_id'));
 
-
-
-        // return new UserResource(Auth::user());
-
     }
 }
 

@@ -89,27 +89,30 @@ export default {
       return this.$store.getters["ingredients/getAll"];
     },
     meals() {
-      let items = this.$store.getters["meals/getAll"];
+      let meals = this.$store.getters["meals/getAll"];
 
-      // filters meals where the user has all the ingredients for
+      // defines all the user's current ingredient id's
       const userIngredientIds = this.user.ingredients.map(
-        (ingredient) => ingredient.id
-      );
+        (ingredient) => ingredient.id);
 
-      // check if user has already made this meal
+      // returns only the meals where the user has all the required ingredients for
+      const filteredMeals = meals.map((meal) => meal.ingredient_id);
+      console.log(filteredMeals);
+    
+      // check if user has already made the remaining meals
       const userMealIds = this.user.meals.map((meal) => meal.id);
-
-      items = items.map((meal) => {
+      meals = meals.map((meal) => {
         let result = userMealIds.find((element) => {
           return element === meal.id;
         });
 
+      // sets isMade status on already made meals
         const isMade = result !== undefined;
         return { ...meal, isMade };
       });
       
       // slices and paginates the result
-      return items.slice(
+      return meals.slice(
         (this.currentPage - 1) * this.perPage,
         this.currentPage * this.perPage
       );
