@@ -46,49 +46,45 @@
 <script>
 export default {
     computed: {
+        
         user() {
             return this.$store.getters["account/get"];
         },
-        userMeals() {
-            return this.$store.getters["user/getAll"].meals;
-        },
         meal() {
-           
 
-            const currentMeal = this.$store.getters["meals/getById"](
-                parseInt(this.$route.params.id)
-            );
+            const currentMeal = {...this.$store.getters["meals/getById"](parseInt(this.$route.params.id))}
 
-            // const userMealIds = userMeals.map((meal) => meal.id);
+            const userMealIds = this.user.meals.map((meal) => meal.id);
 
-            // let result = userMealIds.find((element) => {
-            //     return element == currentMeal["id"];
-            // });
+            let result = userMealIds.find((element) => {
+                return element == currentMeal["id"];
+            });
 
-            // const isMade = result !== undefined;
+            const isMade = result !== undefined;
 
-            // if (isMade) {
-            //     return { ...currentMeal, isMade };
-            // }
+            if (isMade) {
+                return { ...currentMeal, isMade };
+            }
 
             return currentMeal;
-        },
+
+            },
     },
     mounted() {
-        this.$store.dispatch("meals/getCurrentMeal", {
-            id: parseInt(this.$route.params.id),
-        });
+        this.$store.dispatch('meals/getCurrentMeal', { id: parseInt(this.$route.params.id) } );
+        this.$store.dispatch("account/set");
     },
     methods: {
         submitMake() {
-            const mealId = { meal_id: this.meal["id"] };
-            this.$store.dispatch("user/makeUserMeal", mealId);
+            const mealId = { meal_id: this.meal.id };
+            this.$store.dispatch("account/makeUserMeal", mealId);
         },
     },
 };
 </script>
 
 <style scoped>
+
 .container {
     text-align: left;
     width: 50%;
@@ -110,6 +106,7 @@ img {
     width: 40%;
     margin: 20px;
 }
+
 .image {
     border-bottom: 1px solid grey;
     margin: 20px;
@@ -129,4 +126,5 @@ img {
 .thumbs {
     width: 150px;
 }
+
 </style>

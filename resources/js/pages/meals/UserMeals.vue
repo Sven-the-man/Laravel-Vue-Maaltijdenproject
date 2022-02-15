@@ -108,13 +108,11 @@ export default {
         return { ...meal, isMade };
       });
       
-      // // slices and paginates the result
+      // slices and paginates the result
       return meals.slice(
         (this.currentPage - 1) * this.perPage,
         this.currentPage * this.perPage
       );
-
-      return meals;
     },
     totalRows() {
       return this.$store.getters["meals/getAll"].length;

@@ -45,8 +45,7 @@ export default {
       ingredient: {
         name: null,
       },
-      newIngredient: []
-        
+      newIngredient: []       
     };
   },
   computed: {
