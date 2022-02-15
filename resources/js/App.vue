@@ -23,7 +23,7 @@ export default {
     padding-top: 60px;
 }
 
-
-
 </style>
+
+
 

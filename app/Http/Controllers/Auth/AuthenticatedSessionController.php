@@ -52,4 +52,9 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    public function user(): UserResource
+    {
+        return new UserResource(Auth::user());
+    }
 }

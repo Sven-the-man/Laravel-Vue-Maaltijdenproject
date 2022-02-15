@@ -21,7 +21,7 @@
       <div class="user_ingredients">
         <h2>Mijn ingredienten</h2>
         <div class="list">
-          <li v-for="ingredient in userIngredients" :key="ingredient.id">
+          <li v-for="ingredient in user.ingredients" :key="ingredient.id">
             {{ ingredient.name }}
           </li>
         </div>
@@ -29,7 +29,7 @@
       <div class="user_ingredients">
         <h4>Gemaakte maaltijden (debug)</h4>
         <div class="list">
-          <li v-for="meal in userMeals" :key="meal.id">
+          <li v-for="meal in user.meals" :key="meal.id">
             {{ meal.id }}
           </li>
         </div>
@@ -79,12 +79,7 @@ export default {
     };
   },
   computed: {
-    userIngredients() {
-      return this.$store.getters["user/getAll"].ingredients;
-    },
-    userMeals() {
-      return this.$store.getters["user/getAll"].meals;
-    },
+    
     user() {
       return this.$store.getters["account/get"];
     },
@@ -92,32 +87,32 @@ export default {
       return this.$store.getters["ingredients/getAll"];
     },
     meals() {
-      let meals = this.$store.getters["meals/getAll"];
+      // let meals = this.$store.getters["meals/getAll"];
 
-      // defines all the user's current ingredient id's
-      const userIngredientIds = this.user.ingredients.map(
-        (ingredient) => ingredient.id);
+      // // defines all the user's current ingredient id's
+      // const userIngredientIds = user.ingredients.map(
+      //   (ingredient) => ingredient.id);
 
-      // returns only the meals where the user has all the required ingredients for
+      // // returns only the meals where the user has all the required ingredients for
       // const mappedMealIngredients = meals.map(meal => meal.ingredient_id.map(ingredient => ingredient.id));
     
-      // check if user has already made the remaining meals
-      const userMealIds = this.user.meals.map((meal) => meal.id);
-      meals = meals.map((meal) => {
-        let result = userMealIds.find((element) => {
-          return element === meal.id;
-        });
+      // // check if user has already made the remaining meals
+      // const userMealIds = this.user.meals.map((meal) => meal.id);
+      // meals = meals.map((meal) => {
+      //   let result = userMealIds.find((element) => {
+      //     return element === meal.id;
+      //   });
 
-      // sets isMade status on already made meals
-        const isMade = result !== undefined;
-        return { ...meal, isMade };
-      });
+      // // sets isMade status on already made meals
+      //   const isMade = result !== undefined;
+      //   return { ...meal, isMade };
+      // });
       
-      // slices and paginates the result
-      return meals.slice(
-        (this.currentPage - 1) * this.perPage,
-        this.currentPage * this.perPage
-      );
+      // // slices and paginates the result
+      // return meals.slice(
+      //   (this.currentPage - 1) * this.perPage,
+      //   this.currentPage * this.perPage
+      // );
     },
     totalRows() {
       return this.$store.getters["meals/getAll"].length;
@@ -126,13 +121,12 @@ export default {
   mounted() {
     this.$store.dispatch("ingredients/setAll");
     this.$store.dispatch("meals/setAll");
-    
-   
+    this.$store.dispatch("account/set");
   },
   methods: {
     updateUserIngredients() {
       const ingredients = this.selectedIngredients.map((select) => select.id);
-      this.$store.dispatch("user/updateUserIngredients", ingredients);
+      this.$store.dispatch("account/updateUserIngredients", ingredients);
     },
   },
 };
