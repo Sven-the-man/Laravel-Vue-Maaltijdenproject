@@ -87,32 +87,34 @@ export default {
       return this.$store.getters["ingredients/getAll"];
     },
     meals() {
-      // let meals = this.$store.getters["meals/getAll"];
+      let meals = this.$store.getters["meals/getAll"];
 
-      // // defines all the user's current ingredient id's
-      // const userIngredientIds = user.ingredients.map(
-      //   (ingredient) => ingredient.id);
+      // defines all the user's current ingredient id's
+      const userIngredientIds = this.user.ingredients.map(
+        (ingredient) => ingredient.id);
 
-      // // returns only the meals where the user has all the required ingredients for
-      // const mappedMealIngredients = meals.map(meal => meal.ingredient_id.map(ingredient => ingredient.id));
+      // returns only the meals where the user has all the required ingredients for
+      const mappedMealIngredients = meals.map(meal => meal.ingredient_id.map(ingredient => ingredient.id));
     
-      // // check if user has already made the remaining meals
-      // const userMealIds = this.user.meals.map((meal) => meal.id);
-      // meals = meals.map((meal) => {
-      //   let result = userMealIds.find((element) => {
-      //     return element === meal.id;
-      //   });
+      // check if user has made the remaining meals
+      const userMealIds = this.user.meals.map((meal) => meal.id);
+      meals = meals.map((meal) => {
+        let result = userMealIds.find((element) => {
+          return element === meal.id;
+        });
 
-      // // sets isMade status on already made meals
-      //   const isMade = result !== undefined;
-      //   return { ...meal, isMade };
-      // });
+      // sets "isMade" status on already made meals
+        const isMade = result !== undefined;
+        return { ...meal, isMade };
+      });
       
       // // slices and paginates the result
-      // return meals.slice(
-      //   (this.currentPage - 1) * this.perPage,
-      //   this.currentPage * this.perPage
-      // );
+      return meals.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
+
+      return meals;
     },
     totalRows() {
       return this.$store.getters["meals/getAll"].length;
