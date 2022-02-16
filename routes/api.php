@@ -47,4 +47,3 @@ Route::post('user/makeUserMeal', [UserController::class, 'makeUserMeal']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 Route::get('user', [AuthenticatedSessionController::class, 'user'])->middleware('auth');
-

@@ -23,8 +23,16 @@
             <tr v-for="(ingredient, index) in ingredients" :key="ingredient.id">
               <td>{{ ingredient.name }}</td>
               <td>
-                <form @submit.prevent="updateIngredient(newIngredient[index], ingredient.id)">
-                  <input v-model="newIngredient[index]" type="text" :placeholder="ingredient.name" />
+                <form
+                  @submit.prevent="
+                    updateIngredient(newIngredient[index], ingredient.id)
+                  "
+                >
+                  <input
+                    v-model="newIngredient[index]"
+                    type="text"
+                    :placeholder="ingredient.name"
+                  />
                   <button class="btn btn-primary">Update</button>
                 </form>
               </td>
@@ -45,7 +53,7 @@ export default {
       ingredient: {
         name: null,
       },
-      newIngredient: []       
+      newIngredient: [],
     };
   },
   computed: {
@@ -69,7 +77,7 @@ export default {
       this.$store.dispatch("ingredients/create", ingredient);
     },
     updateIngredient(name, id) {
-      this.$store.dispatch("ingredients/update", {name, id});
+      this.$store.dispatch("ingredients/update", { name, id });
     },
   },
 };

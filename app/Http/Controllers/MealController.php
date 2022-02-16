@@ -19,7 +19,6 @@ class MealController extends Controller
     {
 
         return MealResource::collection(Meal::orderBy('created_at', 'desc')->get());
-        
     }
 
     public function store(StoreMealRequest $request)
@@ -63,5 +62,4 @@ class MealController extends Controller
 
         return response()->json(['meal' => $meal->load('ingredients'), 'ingredients' => Ingredient::all()]);
     }
-
 }

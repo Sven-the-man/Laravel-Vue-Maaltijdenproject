@@ -11,9 +11,9 @@
       <div class="article" v-for="meal in meals" :key="meal.id">
         <div class="text">
           <router-link :to="{ name: 'meal.show', params: { id: meal.id } }">
-            <img :src="meal.image_name">
+            <img :src="meal.image_name" />
           </router-link>
-          <p>{{meal.name}}</p>
+          <p>{{ meal.name }}</p>
         </div>
       </div>
     </main>
@@ -78,5 +78,4 @@ export default {
   text-align: center;
   font-size: 17px;
 }
-
 </style>

@@ -8,7 +8,9 @@
       </div>
       <div class="button">
         <router-link :to="{ name: 'ingredients.manage' }">
-          <button class="btn btn-primary">Beheer ingredienten</button></router-link
+          <button class="btn btn-primary">
+            Beheer ingredienten
+          </button></router-link
         >
       </div>
     </div>

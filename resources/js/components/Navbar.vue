@@ -1,37 +1,42 @@
 <template>
   <nav class="navbar navbar-expand-sm fixed-top justify-content-center">
-   
     <ul class="navbar_items">
       <li class="nav-item">
-        <router-link v-if="!isLoggedIn" :to="{name: 'auth.login'}" class="nav-link">Log in</router-link>
-        <a v-if="isLoggedIn" class="nav-link pe-auto" href="#" @click="logout">Log uit</a>
+        <router-link
+          v-if="!isLoggedIn"
+          :to="{ name: 'auth.login' }"
+          class="nav-link"
+          >Log in</router-link
+        >
+        <a v-if="isLoggedIn" class="nav-link pe-auto" href="#" @click="logout"
+          >Log uit</a
+        >
       </li>
       <li class="nav-item">
         <router-link to="/">Home</router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{name: 'user.meals'}">Mijn maaltijden</router-link>
+        <router-link :to="{ name: 'user.meals' }">Mijn maaltijden</router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{name: 'AdminPanel'}">Admin paneel</router-link>
+        <router-link :to="{ name: 'AdminPanel' }">Admin paneel</router-link>
       </li>
-      
     </ul>
   </nav>
 </template>
 
 <script>
- export default {
-     computed: {
-         isLoggedIn() {
-             return this.$store.getters['account/getIsLoggedIn'];
-         },
-     },
-     methods: {
-         logout() {
-           this.$store.dispatch('account/logout');
-        // this.$router.push('/');
-      },     },
+export default {
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["account/getIsLoggedIn"];
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("account/logout");
+    },
+  },
 };
 </script>
 
@@ -63,6 +68,6 @@ li a {
 }
 
 a {
-    padding: 16px;
+  padding: 16px;
 }
 </style>
