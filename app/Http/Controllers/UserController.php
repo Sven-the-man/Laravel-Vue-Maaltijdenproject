@@ -10,13 +10,14 @@ class UserController extends Controller
 {
     public function index()
     {
-        
+
         return new UserResource(Auth::user());
     }
 
-    public function getUserIngredients() {
+    public function getUserIngredients()
+    {
 
-    
+
         return new UserResource(Auth::user());
     }
 
@@ -26,16 +27,13 @@ class UserController extends Controller
         Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
 
         return new UserResource(Auth::user());
-
     }
 
 
-    public function makeUserMeal(Request $request) {
+    public function makeUserMeal(Request $request)
+    {
 
-       
-       Auth::user()->meals()->attach($request->get('meal_id'));
-    
-        
+
+        Auth::user()->meals()->attach($request->get('meal_id'));
     }
 }
-

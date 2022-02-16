@@ -1,7 +1,7 @@
 <template>
     <div class="container" v-if="meal">
-        <div class="meal">
-            <div class="madeMealQuestion" :key="componentKey" v-if="meal">
+        <div class="meal" :key="componentKey">
+            <div class="madeMealQuestion"  v-if="meal">
                 <p v-if="meal.isMade" style="color: green" >
                     Je hebt deze maaltijd gemaakt!
                 </p>

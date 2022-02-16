@@ -1,8 +1,6 @@
 Optimalisatie:
 
-1. Bij re-render van components geeft Vue aan dat this.user undefined is, dit heeft betrekking op volgorde van inladen.
+1. Re-render showMeal gaat nog niet vlekkeloos.
 
 
 
-kladblok:
-    const mappedMealIngredients = meals.map(meal => meal.ingredient_id.map(ingredient => ingredient.id));

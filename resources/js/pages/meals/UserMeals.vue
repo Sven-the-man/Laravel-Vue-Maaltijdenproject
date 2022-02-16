@@ -26,14 +26,6 @@
           </li>
         </div>
       </div>
-      <div class="user_ingredients">
-        <h4>Gemaakte maaltijden (debug)</h4>
-        <div class="list">
-          <li v-for="meal in user.meals" :key="meal.id">
-            {{ meal.id }}
-          </li>
-        </div>
-      </div>
     </div>
     <div class="main">
       <div class="my_meals">
@@ -112,7 +104,7 @@ export default {
 
       meals = meals.filter(function (meal) {
         return filteredMealIds.includes(meal.id);
-      })
+      });
 
       // check if user has made the remaining meals
       const userMealIds = this.user.meals.map((meal) => meal.id);

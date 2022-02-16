@@ -40,6 +40,5 @@ class IngredientController extends Controller
         $ingredient->update($validated);
 
         return IngredientResource::collection(Ingredient::all()->sortByDesc("created_at"));
-
     }
 }
