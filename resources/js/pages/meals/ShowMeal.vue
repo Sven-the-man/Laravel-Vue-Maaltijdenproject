@@ -1,8 +1,8 @@
 <template>
     <div class="container" v-if="meal">
         <div class="meal">
-            <div class="madeMealQuestion">
-                <p v-if="meal.isMade" style="color: green">
+            <div class="madeMealQuestion" :key="componentKey" v-if="meal">
+                <p v-if="meal.isMade" style="color: green" >
                     Je hebt deze maaltijd gemaakt!
                 </p>
                 <p v-else>Je hebt deze maaltijd nog niet gemaakt....</p>
@@ -45,6 +45,11 @@
 
 <script>
 export default {
+    data() {
+        return {
+            componentKey: 0,
+        }
+    },
     computed: {
         
         user() {
@@ -78,6 +83,7 @@ export default {
         submitMake() {
             const mealId = { meal_id: this.meal.id };
             this.$store.dispatch("account/makeUserMeal", mealId);
+            this.componentKey += 1;
         },
     },
 };

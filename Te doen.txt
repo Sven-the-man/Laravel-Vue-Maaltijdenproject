@@ -1,11 +1,8 @@
+Optimalisatie:
 
-Wat wil ik bereiken:
-
-Ik heb een lijst met ingredienten die die user heeft: user.ingredients
-Elke meal heeft ook ingredienten: (meal.ingredients)
-Ik wil alle maaltijden terug krijgen waarvan alle meal.ingredients in user.ingredients voorkomen.
+1. Bij re-render van components geeft Vue aan dat this.user undefined is, dit heeft betrekking op volgorde van inladen.
 
 
 
-
-
+kladblok:
+    const mappedMealIngredients = meals.map(meal => meal.ingredient_id.map(ingredient => ingredient.id));

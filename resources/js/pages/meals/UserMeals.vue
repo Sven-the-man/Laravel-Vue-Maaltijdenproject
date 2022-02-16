@@ -46,7 +46,7 @@
               :per-page="perPage"
             />
           </div>
-          <main class="grid" :v-if="meals">
+          <main class="grid">
             <div class="article" v-for="meal in meals" :key="meal.id">
               <div class="text">
                 <router-link
@@ -54,7 +54,7 @@
                 >
                   <img :src="'../' + meal.image_name" />
                 </router-link>
-                <p>{{ meal.name }}</p>
+                <p>({{ meal.id }}) {{ meal.name }}</p>
                 <p style="color: green" v-if="meal.isMade">Maaltijd gemaakt!</p>
               </div>
             </div>
@@ -79,7 +79,6 @@ export default {
     };
   },
   computed: {
-    
     user() {
       return this.$store.getters["account/get"];
     },
@@ -91,11 +90,30 @@ export default {
 
       // defines all the user's current ingredient id's
       const userIngredientIds = this.user.ingredients.map(
-        (ingredient) => ingredient.id);
+        (ingredient) => ingredient.id
+      );
 
       // returns only the meals where the user has all the required ingredients for
-      const mappedMealIngredients = meals.map(meal => meal.ingredient_id.map(ingredient => ingredient.id));
-    
+      const mappedMealIngredientIds = meals.map((meal) =>
+        meal.ingredient_id.map((ingredient) => ingredient.id)
+      );
+
+      let filteredMealIds = [];
+
+      for (let n = 0; n < mappedMealIngredientIds.length; n++) {
+        if (
+          mappedMealIngredientIds[n].every((ingredient) =>
+            userIngredientIds.includes(ingredient)
+          )
+        ) {
+          filteredMealIds.push(n + 1);
+        }
+      }
+
+      meals = meals.filter(function (meal) {
+        return filteredMealIds.includes(meal.id);
+      })
+
       // check if user has made the remaining meals
       const userMealIds = this.user.meals.map((meal) => meal.id);
       meals = meals.map((meal) => {
@@ -103,11 +121,11 @@ export default {
           return element === meal.id;
         });
 
-      // sets "isMade" status on already made meals
+        // sets "isMade" status on already made meals
         const isMade = result !== undefined;
         return { ...meal, isMade };
       });
-      
+
       // slices and paginates the result
       return meals.slice(
         (this.currentPage - 1) * this.perPage,
