@@ -4,18 +4,21 @@
       <div class="add_ingredients">
         <h2>Nieuwe ingredienten</h2>
         <form
+          v-if="user"
           enctype="multipart/form-data"
           @submit.prevent="updateUserIngredients"
         >
           <multiselect
-            v-model="selectedIngredients"
+            v-model="currentUser.ingredients"
             :options="ingredients"
             track-by="id"
             label="name"
             multiple
             :close-on-select="false"
           />
-          <button type="submit" class="btn btn-primary mr-1">Pas aan</button>
+          <button type="submit" class="btn btn-primary">
+            Upload naar server
+          </button>
         </form>
       </div>
       <div class="user_ingredients">
@@ -29,7 +32,7 @@
     </div>
     <div class="main">
       <div class="my_meals">
-        <h2>Voor deze maaltijden heb je alle ingredienten in huis!</h2>
+        <h2 @click="filterCurrentMeals()">Voor deze maaltijden heb je alle ingredienten in huis!</h2>
         <div class="container">
           <div class="navigation">
             <b-pagination
@@ -38,7 +41,7 @@
               :per-page="perPage"
             />
           </div>
-          <main class="grid">
+          <main class="grid" v-if="meals">
             <div class="article" v-for="meal in meals" :key="meal.id">
               <div class="text">
                 <router-link
@@ -65,14 +68,15 @@ export default {
   },
   data() {
     return {
-      selectedIngredients: [],
       currentPage: 1,
       perPage: 15,
     };
   },
   computed: {
     user() {
-      return this.$store.getters["account/get"];
+      const user = this.$store.getters["account/get"];
+      this.currentUser = user;
+      return user;
     },
     ingredients() {
       return this.$store.getters["ingredients/getAll"];
@@ -135,7 +139,9 @@ export default {
   },
   methods: {
     updateUserIngredients() {
-      const ingredients = this.selectedIngredients.map((select) => select.id);
+      const ingredients = this.currentUser.ingredients.map(
+        (select) => select.id
+      );
       this.$store.dispatch("account/updateUserIngredients", ingredients);
     },
   },
@@ -177,5 +183,9 @@ export default {
 .list {
   text-align: left;
   padding-left: 15px;
+}
+
+button {
+  margin: 10px;
 }
 </style>

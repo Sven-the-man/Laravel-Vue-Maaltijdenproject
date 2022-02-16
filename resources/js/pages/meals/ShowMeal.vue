@@ -1,6 +1,6 @@
 <template>
-  <div class="container" v-if="meal">
-    <div class="meal" :key="componentKey">
+  <div class="container">
+    <div class="meal" >
       <div class="madeMealQuestion" v-if="meal">
         <p v-if="meal.isMade" style="color: green">
           Je hebt deze maaltijd gemaakt!
@@ -38,11 +38,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      componentKey: 0,
-    };
-  },
+
   computed: {
     user() {
       return this.$store.getters["account/get"];
@@ -79,7 +75,6 @@ export default {
     submitMake() {
       const mealId = { meal_id: this.meal.id };
       this.$store.dispatch("account/makeUserMeal", mealId);
-      this.componentKey += 1;
     },
   },
 };

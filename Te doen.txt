@@ -1,6 +1,7 @@
 Optimalisatie:
 
-1. Re-render showMeal gaat nog niet vlekkeloos.
+1. ShowMeal: meal() computed component updated niet bij meal toevoegen
+2. Vuex store errors bij usermeals aanpassen
 
 
 
