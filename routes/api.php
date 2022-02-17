@@ -32,10 +32,9 @@ Route::post('meals/remove', [mealController::class, 'destroy']);
 // ingredient routes
 Route::get('ingredients', [IngredientController::class, 'index']);
 Route::post('ingredients/create', [IngredientController::class, 'store']);
-Route::post('ingredients/update', [IngredientController::class, 'update']);
+Route::post('ingredients/{ingredient}/update', [IngredientController::class, 'update']);
 
 //user routes
-// Route::get('user', [UserController::class, 'index']);
 Route::get('user/meals', [UserController::class, 'index']);
 Route::get('user/ingredients', [UserController::class, 'getUserIngredients']);
 Route::post('user/ingredients/update', [UserController::class, 'update']);

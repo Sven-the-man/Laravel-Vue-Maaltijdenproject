@@ -3,6 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\User;
+use App\Models\Ingredient;
+
 
 class UserResource extends JsonResource
 {
@@ -18,8 +21,9 @@ class UserResource extends JsonResource
 
             'id' => $this->id,
             'name' => $this->name,
-            'ingredients' =>$this->ingredients->pluck('id'), // IngredientResource::collection()
-            'meals' => $this->meals->pluck('id') //MealResource::collection(),
+            'userIngredients' => IngredientResource::collection($this->ingredients),
+            'userMeals' => $this->meals->pluck('id'),
+           
         ];
     }
 

@@ -49,7 +49,7 @@ export default {
         ),
       };
 
-      const userMealIds = this.$store.getters["account/get"].meals.map((meal) => meal.id);
+      const userMealIds = this.$store.getters["account/get"].meals;
 
       let result = userMealIds.find((element) => {
         return element == currentMeal["id"];

@@ -9,7 +9,7 @@
           @submit.prevent="updateUserIngredients"
         >
           <multiselect
-            v-model="currentUser.ingredients"
+            v-model="currentUser.userIngredients"
             :options="ingredients"
             track-by="id"
             label="name"
@@ -24,7 +24,7 @@
       <div class="user_ingredients">
         <h2>Mijn ingredienten</h2>
         <div class="list">
-          <li v-for="ingredient in user.ingredients" :key="ingredient.id">
+          <li v-for="ingredient in user.userIngredients" :key="ingredient.index">
             {{ ingredient.name }}
           </li>
         </div>
@@ -86,7 +86,7 @@ export default {
       let meals = this.$store.getters["meals/getAll"];
 
       // defines all the user's current ingredient id's
-      const userIngredientIds = this.user.ingredients.map(
+      const userIngredientIds = this.user.userIngredients.map(
         (ingredient) => ingredient.id
       );
 
@@ -94,7 +94,6 @@ export default {
       const mappedMealIngredientIds = meals.map((meal) =>
         meal.ingredient_id.map((ingredient) => ingredient.id)
       );
-    console.log(mappedMealIngredientIds);
       let filteredMealIds = [];
 
       for (let n = 0; n < mappedMealIngredientIds.length; n++) {
@@ -112,7 +111,7 @@ export default {
       });
 
       // check if user has made the remaining meals
-      const userMealIds = this.user.meals.map((meal) => meal.id);
+      const userMealIds = this.user.userMeals;
       meals = meals.map((meal) => {
         let result = userMealIds.find((element) => {
           return element === meal.id;
@@ -140,7 +139,7 @@ export default {
   },
   methods: {
     updateUserIngredients() {
-      const ingredients = this.currentUser.ingredients.map(
+      const ingredients = this.currentUser.userIngredients.map(
         (select) => select.id
       );
       this.$store.dispatch("account/updateUserIngredients", ingredients);

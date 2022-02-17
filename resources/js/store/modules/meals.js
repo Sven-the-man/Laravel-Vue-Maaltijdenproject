@@ -19,7 +19,6 @@ export const meals = {
             commit("SET_ALL", data);
         },
         async createMeal({ commit }, payload) {
-            console.log();
             const { data } = await axios.post("meals/create", payload);
             commit("SET_ALL", data);
         },

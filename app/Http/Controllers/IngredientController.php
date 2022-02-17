@@ -30,8 +30,10 @@ class IngredientController extends Controller
         return IngredientResource::collection(Ingredient::all()->sortByDesc("created_at"));
     }
 
-    public function update(UpdateIngredientRequest $request)
+    public function update(UpdateIngredientRequest $request, Ingredient $ingredient)
     {
+        dd($ingredient);
+        
         // TODO :: RouteMmodelBinding
         $validated = $request->validated();
 
