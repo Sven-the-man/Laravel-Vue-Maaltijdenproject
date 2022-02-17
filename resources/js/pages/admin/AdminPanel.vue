@@ -75,7 +75,7 @@ export default {
 
   methods: {
     removeMeal(mealId) {
-      this.$store.dispatch("meals/removeMeal", mealId);
+      this.$store.dispatch("meals/removeMeal", {'id': mealId});
     },
   },
 };

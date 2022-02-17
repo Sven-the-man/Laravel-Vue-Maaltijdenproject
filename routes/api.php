@@ -27,7 +27,7 @@ Route::get('meals', [MealController::class, 'index']);
 Route::get('/meals/{meal}', [MealController::class, 'show']);
 Route::post('/meals/create', [MealController::class, 'store']);
 Route::post('meals/{meal}/update', [MealController::class, 'update']);
-Route::post('meals/remove', [mealController::class, 'destroy']);
+Route::post('meals/{meal}/destroy', [mealController::class, 'destroy']);
 
 // ingredient routes
 Route::get('ingredients', [IngredientController::class, 'index']);

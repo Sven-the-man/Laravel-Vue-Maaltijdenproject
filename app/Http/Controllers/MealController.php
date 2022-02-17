@@ -45,9 +45,11 @@ class MealController extends Controller
         return MealResource::collection(Meal::all());
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, Meal $meal)
     {
         // TODO :: RouteMmodelBinding
+
+        dd($meal);
 
         $meal = Meal::find($request['mealId']);
 

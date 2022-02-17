@@ -32,12 +32,8 @@ class IngredientController extends Controller
 
     public function update(UpdateIngredientRequest $request, Ingredient $ingredient)
     {
-        dd($ingredient);
         
-        // TODO :: RouteMmodelBinding
         $validated = $request->validated();
-
-        $ingredient = Ingredient::find($request->id);
 
         $ingredient->update($validated);
 
