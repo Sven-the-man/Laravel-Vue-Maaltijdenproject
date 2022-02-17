@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sidebar">
       <div class="add_ingredients">
-        <h2>Nieuwe ingredienten</h2>
+        <h2>Mijn ingredienten</h2>
         <form
           v-if="user"
           enctype="multipart/form-data"
@@ -70,11 +70,12 @@ export default {
     return {
       currentPage: 1,
       perPage: 15,
+      currentUser: {}
     };
   },
   computed: {
     user() {
-      const user = this.$store.getters["account/get"];
+      const user = {...this.$store.getters["account/get"]};
       this.currentUser = user;
       return user;
     },
@@ -93,7 +94,7 @@ export default {
       const mappedMealIngredientIds = meals.map((meal) =>
         meal.ingredient_id.map((ingredient) => ingredient.id)
       );
-
+    console.log(mappedMealIngredientIds);
       let filteredMealIds = [];
 
       for (let n = 0; n < mappedMealIngredientIds.length; n++) {

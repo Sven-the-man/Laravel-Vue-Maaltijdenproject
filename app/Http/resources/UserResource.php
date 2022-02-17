@@ -18,9 +18,8 @@ class UserResource extends JsonResource
 
             'id' => $this->id,
             'name' => $this->name,
-            'ingredients' => IngredientResource::collection($this->ingredients),
-            'meals' => MealResource::collection($this->meals),
-            
+            'ingredients' =>$this->ingredients->pluck('id'), // IngredientResource::collection()
+            'meals' => $this->meals->pluck('id') //MealResource::collection(),
         ];
     }
 

@@ -47,6 +47,7 @@ class MealController extends Controller
 
     public function destroy(Request $request)
     {
+        // TODO :: RouteMmodelBinding
 
         $meal = Meal::find($request['mealId']);
 

@@ -12,10 +12,6 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
-//vue-multiselect
-import Multiselect from "vue-multiselect";
-Vue.component("multiselect", Multiselect);
-
 //Main pages
 import App from "./App.vue";
 

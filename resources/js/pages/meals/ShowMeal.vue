@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="meal" >
+    <div class="meal">
       <div class="madeMealQuestion" v-if="meal">
         <p v-if="meal.isMade" style="color: green">
           Je hebt deze maaltijd gemaakt!
@@ -38,7 +38,6 @@
 
 <script>
 export default {
-
   computed: {
     user() {
       return this.$store.getters["account/get"];
@@ -50,7 +49,7 @@ export default {
         ),
       };
 
-      const userMealIds = this.user.meals.map((meal) => meal.id);
+      const userMealIds = this.$store.getters["account/get"].meals.map((meal) => meal.id);
 
       let result = userMealIds.find((element) => {
         return element == currentMeal["id"];

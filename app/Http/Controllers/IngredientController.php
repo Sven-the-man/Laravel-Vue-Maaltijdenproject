@@ -23,7 +23,7 @@ class IngredientController extends Controller
 
         $validated = $request->validated();
 
-        $validated['category'] = 'pinda';
+        $validated['category'] = 'Onbekend';
 
         Ingredient::create($validated);
 
@@ -32,7 +32,7 @@ class IngredientController extends Controller
 
     public function update(UpdateIngredientRequest $request)
     {
-
+        // TODO :: RouteMmodelBinding
         $validated = $request->validated();
 
         $ingredient = Ingredient::find($request->id);

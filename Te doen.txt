@@ -1,7 +1,15 @@
+
+
+Foutmeldingen(?):
+1. ShowMeal: meal() computed component updated zichzelf niet bij user pivot table update
+2. Vuex store errors bij usermeals verwijderen
+
 Optimalisatie:
+1. User resource bevat nog junk data die ik niet nodig heb, heb eigenlijk alleen de ID's nodig. Pluck('id) werkt niet?
 
-1. ShowMeal: meal() computed component updated niet bij meal toevoegen
-2. Vuex store errors bij usermeals aanpassen
+Features:
+1. Vue-multiselect categories heb ik niet werkend gekregen
 
+-- liever 1 request naar de backend ipv 3
 
 

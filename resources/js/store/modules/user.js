@@ -12,6 +12,8 @@ export const user = {
         async setAll({ commit }) {
             const { data } = await axios.get("user");
             commit("SET_ALL", data);
+            commit("SET_ALL", data);
+            commit("SET_ALL", data);
         },
         async create({ commit }, payload) {
             console.log();

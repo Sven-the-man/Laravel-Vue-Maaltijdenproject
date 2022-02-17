@@ -23,8 +23,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 //meal routes
-
-
 Route::get('meals', [MealController::class, 'index']);
 Route::get('/meals/{meal}', [MealController::class, 'show']);
 Route::post('/meals/create', [MealController::class, 'store']);
