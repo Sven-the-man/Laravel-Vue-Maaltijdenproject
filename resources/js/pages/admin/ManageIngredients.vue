@@ -77,7 +77,7 @@ export default {
       this.$store.dispatch("ingredients/create", ingredient);
     },
     updateIngredient(name, id) {
-      this.$store.dispatch("ingredients/update", { 'name': name, 'id':id });
+      this.$store.dispatch("ingredients/update", { 'name': name, 'id': id });
     },
   },
 };

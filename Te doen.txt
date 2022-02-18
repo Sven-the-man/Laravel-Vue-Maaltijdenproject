@@ -1,11 +1,8 @@
 
 1. Vue-multiselect categories heb ik niet werkend gekregen
 
-2. Meal destroy payload correct opschrijven
+2. liever 1 request naar de backend ipv (user moet alle meals en alle ingredients meekrijgen)
 
-3. liever 1 request naar de backend ipv (user moet alle meals en alle ingredients meekrijgen)
-
-4. Route model binding: destroy meal fix
 
 
 

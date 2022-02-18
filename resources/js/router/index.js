@@ -4,7 +4,7 @@ import Home from '../pages/Home.vue'
 import ShowMeal from '../pages/meals/Show.vue';
 import EditMeal from '../pages/meals/Edit.vue';
 import CreateMeal from '../pages/meals/Create.vue';
-import UserMeals from '../pages/user/UserMeals.vue';
+import UserMeals from '../pages/user/Meals.vue';
 import ManageIngredients from '../pages/admin/ManageIngredients.vue'
 import AdminPanel from '../pages/admin/AdminPanel.vue';
 import store from '../store';

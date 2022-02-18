@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\Models\Ingredient;
+use App\Models\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserResource;
@@ -55,6 +56,6 @@ class AuthenticatedSessionController extends Controller
 
     public function user(): UserResource
     {
-        return new UserResource(Auth::user());
+        return new UserResource(Auth::user(), ['ingredients' => Ingredient::all(), 'meals' => Meal::all()]);
     }
 }
