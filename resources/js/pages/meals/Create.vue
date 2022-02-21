@@ -6,10 +6,11 @@
 
 <script>
 import Multiselect from "vue-multiselect";
-import InputForm from "./components/InputForm.vue";
+import InputForm from "/resources/js/components/InputForm.vue";
 
 export default {
-    components: { Multiselect },
+    components: { Multiselect, InputForm },
+
     data() {
         return {
             meal: {

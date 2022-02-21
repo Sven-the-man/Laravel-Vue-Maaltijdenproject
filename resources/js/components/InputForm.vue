@@ -50,12 +50,8 @@
 import Multiselect from "vue-multiselect";
 
 export default {
-  components: { Multiselect },
-};
-  
-export default {
   props: {
-    user: {
+    meal: {
         type: Object,
         },
     },
