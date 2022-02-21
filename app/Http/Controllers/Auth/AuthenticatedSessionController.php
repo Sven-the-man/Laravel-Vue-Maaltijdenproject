@@ -35,6 +35,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return new UserResource(Auth::user());
+
     }
 
     /**
@@ -54,8 +55,8 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
-    public function user(): UserResource
+    public function user() //userResource
     {
-        return new UserResource(Auth::user(), ['ingredients' => Ingredient::all(), 'meals' => Meal::all()]);
+        return response()->json(['user' => new UserResource(Auth::user()), 'meals' => Meal::all(), 'ingredients' => Ingredient::all()]);
     }
 }
