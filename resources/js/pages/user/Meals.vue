@@ -75,16 +75,17 @@ export default {
   },
   computed: {
     user() {
-      const user = {...this.$store.getters["account/get"]};
+      const user = {...this.$store.getters["account/get"].user};
       this.currentUser = user;
       return user;
     },
     ingredients() {
-      return this.$store.getters["ingredients/getAll"];
+      return this.$store.getters["account/get"].ingredients;
+
     },
     meals() {
-      let meals = this.$store.getters["meals/getAll"];
-
+      let meals = this.$store.getters["account/get"].meals;
+      
       // defines all the user's current ingredient id's
       const userIngredientIds = this.user.userIngredients.map(
         (ingredient) => ingredient.id
@@ -129,13 +130,11 @@ export default {
       );
     },
     totalRows() {
-      return this.$store.getters["meals/getAll"].length;
+      return this.$store.getters["account/get"].meals.length;
     },
   },
   mounted() {
-    this.$store.dispatch("ingredients/setAll");
-    this.$store.dispatch("meals/setAll");
-    this.$store.dispatch("account/set");
+    this.$store.dispatch("account/setAll");
   },
   methods: {
     updateUserIngredients() {

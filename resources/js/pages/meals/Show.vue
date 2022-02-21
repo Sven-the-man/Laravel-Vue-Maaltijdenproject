@@ -39,7 +39,11 @@
 <script>
 export default {
   computed: {
-
+    user() {
+      const user = {...this.$store.getters["account/get"].user.userMeals};
+      this.currentUser = user;
+      return user;
+    },
     meal() {
       const currentMeal = {
         ...this.$store.getters["meals/getById"](
@@ -47,7 +51,7 @@ export default {
         ),
       };
 
-      const userMealIds = this.$store.getters["account/get"].userMeals;
+      const userMealIds = this.$store.getters["account/get"].user.userMeals;
 
       let result = userMealIds.find((element) => {
         return element == currentMeal["id"];

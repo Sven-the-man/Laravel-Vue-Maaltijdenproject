@@ -9,6 +9,7 @@ use App\Models\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\MealResource;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -57,6 +58,6 @@ class AuthenticatedSessionController extends Controller
 
     public function user() //userResource
     {
-        return response()->json(['user' => new UserResource(Auth::user()), 'meals' => Meal::all(), 'ingredients' => Ingredient::all()]);
+        return response()->json(['user' => new UserResource(Auth::user()), 'meals' => MealResource::collection(Meal::all()), 'ingredients' => Ingredient::all()]);
     }
 }

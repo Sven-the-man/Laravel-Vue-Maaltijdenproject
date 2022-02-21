@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
+use App\Http\Resources\MealResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ingredient;
@@ -12,25 +13,25 @@ class UserController extends Controller
 {
     public function index()
     {
-        return new UserResource(Auth::user());
+        return response()->json(['user' => new UserResource(Auth::user()), 'meals' => MealResource::collection(Meal::all()), 'ingredients' => Ingredient::all()]);
     }
 
     public function getUserIngredients()
     {
-        return new UserResource(Auth::user());
+        return response()->json(['user' => new UserResource(Auth::user()), 'meals' => MealResource::collection(Meal::all()), 'ingredients' => Ingredient::all()]);
     }
 
     public function update(Request $request)
     {
         Auth::user()->ingredients()->sync($request->get('ingredient_ids'));
 
-        return new UserResource(Auth::user());
+        return response()->json(['user' => new UserResource(Auth::user()), 'meals' => MealResource::collection(Meal::all()), 'ingredients' => Ingredient::all()]);
     }
 
 
     public function makeUserMeal(Request $request)
     {
         Auth::user()->meals()->attach($request->get('meal_id'));
-        return new UserResource(Auth::user());
+        return response()->json(['user' => new UserResource(Auth::user()), 'meals' => MealResource::collection(Meal::all()), 'ingredients' => Ingredient::all()]);
     }
 }
