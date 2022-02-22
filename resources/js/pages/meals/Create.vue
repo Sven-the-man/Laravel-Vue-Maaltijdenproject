@@ -1,15 +1,14 @@
 <template>
     <div class="container">
-        <InputForm @on-submit="createMeal" />
+        <InputForm :meal="meal" @on-submit="createMeal" />
     </div>
 </template>
 
 <script>
-import Multiselect from "vue-multiselect";
 import InputForm from "/resources/js/components/InputForm.vue";
 
 export default {
-    components: { Multiselect, InputForm },
+    components: { InputForm },
 
     data() {
         return {
@@ -21,20 +20,7 @@ export default {
             },
         };
     },
-    computed: {
-        ingredients() {
-            return this.$store.getters["ingredients/getAll"];
-        },
-    },
-    mounted() {
-        this.$store.dispatch("ingredients/setAll");
-    },
     methods: {
-        dropDocument(event) {
-            this.meal.image = event.dataTransfer
-                ? event.dataTransfer.files[0]
-                : event.target.files[0];
-        },
         createMeal() {
             const ingredients =
                 this.meal.ingredients.length != 0
