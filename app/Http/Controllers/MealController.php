@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateMealRequest;
 use App\Http\Requests\StoreMealRequest;
 use App\Http\Resources\MealResource;
+use App\Http\Resources\UserResource;
 use App\Models\Ingredient;
 use Illuminate\Http\File;
 use App\Models\Meal;

@@ -131,6 +131,7 @@ export default {
     },
     totalRows() {
       return this.$store.getters["account/get"].meals.length;
+      
     },
   },
   mounted() {

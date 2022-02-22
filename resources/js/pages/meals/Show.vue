@@ -70,7 +70,6 @@ export default {
     this.$store.dispatch("meals/getCurrentMeal", {
       id: parseInt(this.$route.params.id),
     });
-    this.$store.dispatch("account/set");
   },
   methods: {
     submitMake() {

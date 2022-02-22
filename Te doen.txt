@@ -1,7 +1,6 @@
 
-1. Vue-multiselect categories heb ik niet werkend gekregen
-
-2. liever 1 request naar de backend ipv (user moet alle meals en alle ingredients meekrijgen)
+1. Vue multiselect categories
+2. Showmeal van 2 naar 1 request
 
 
 
